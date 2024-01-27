@@ -10,7 +10,7 @@ const Hero = () => {
                 <div className="flex">
                     <SpeedLines count={STRIPE_COUNT} />
                     <div
-                        className={`text-9xl font-bold tracking-wider fadeIn ${fadeIn[STRIPE_COUNT]}`}
+                        className={`text-9xl font-bold tracking-wider fadeIn ${fadeIn[STRIPE_COUNT]} ml-5`}
                     >
                         <h1 className="text-black">KEN</h1>
                         <h1 className="text-black">JIANG</h1>
