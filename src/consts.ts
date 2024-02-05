@@ -10,3 +10,7 @@ export const fadeIn = [
     "fadeIn animation-delay-[900ms] opacity-0",
     "fadeIn animation-delay-[1000ms] opacity-0",
 ];
+
+export const selectRandom = (arr: any[]) => {
+    return arr[Math.floor(Math.random() * arr.length)];
+};

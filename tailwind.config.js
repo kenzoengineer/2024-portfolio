@@ -10,6 +10,13 @@ module.exports = {
             fontFamily: {
                 sans: ["Helvetica", "sans-serif"],
             },
+            colors: {
+                "b-red": "#f1522b",
+                "b-blue": "#0077b7",
+                "b-yellow": "#ffc81c",
+                "b-white": "#fffdff",
+                "b-black": "#2e252c",
+            },
         },
     },
     plugins: [

@@ -2,7 +2,7 @@ import Hero from "./components/Hero";
 
 const App = () => {
     return (
-        <div className="App bg-white">
+        <div className="App bg-b-white">
             <Hero />
         </div>
     );
