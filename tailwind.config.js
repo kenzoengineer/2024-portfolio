@@ -5,6 +5,7 @@ module.exports = {
     theme: {
         extend: {
             fontSize: {
+                bigger: "10rem",
                 huge: "12rem",
             },
             fontFamily: {
@@ -16,6 +17,13 @@ module.exports = {
                 "b-yellow": "#ffc81c",
                 "b-white": "#fffdff",
                 "b-black": "#2e252c",
+            },
+            backgroundImage: {
+                stripes:
+                    "repeating-linear-gradient(45deg, #2e252c, #2e252c 20px, #00000000 20px,#00000000 40px);",
+            },
+            boxShadow: {
+                hard: "0 0 0 0 #2e252c",
             },
         },
     },

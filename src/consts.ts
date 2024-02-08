@@ -1,3 +1,5 @@
+import { useEffect, useState } from "react";
+
 export const fadeIn = [
     "fadeIn animation-delay-[100ms] opacity-0",
     "fadeIn animation-delay-[200ms] opacity-0",
@@ -14,3 +16,23 @@ export const fadeIn = [
 export const selectRandom = (arr: any[]) => {
     return arr[Math.floor(Math.random() * arr.length)];
 };
+
+export function useIsVisible(ref: React.MutableRefObject<any>) {
+    const [isIntersecting, setIntersecting] = useState(false);
+
+    useEffect(() => {
+        const observer = new IntersectionObserver(
+            ([entry]) => setIntersecting(entry.isIntersecting),
+            {
+                threshold: 0.6,
+            },
+        );
+
+        observer.observe(ref.current);
+        return () => {
+            observer.disconnect();
+        };
+    }, [ref]);
+
+    return isIntersecting;
+}

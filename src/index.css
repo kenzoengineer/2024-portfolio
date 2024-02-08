@@ -25,6 +25,38 @@ body {
     }
 }
 
+.slideRight {
+    animation-name: slideRightKeyframes;
+    animation-duration: 2000ms;
+    animation-fill-mode: forwards;
+}
+
+@keyframes slideRightKeyframes {
+    0% {
+        transform: translateX(-100%);
+    }
+
+    100% {
+        transform: translateX(0);
+    }
+}
+
+.slideLeft {
+    animation-name: slideLeftKeyframes;
+    animation-duration: 2000ms;
+    animation-fill-mode: forwards;
+}
+
+@keyframes slideLeftKeyframes {
+    0% {
+        transform: translateX(100%);
+    }
+
+    100% {
+        transform: translateX(0);
+    }
+}
+
 .text-stroke {
     -webkit-text-stroke: 3px black;
     text-stroke: 3px black;
