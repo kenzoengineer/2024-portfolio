@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 export const fadeIn = [
     "fadeIn animation-delay-[100ms] opacity-0",
@@ -35,4 +35,31 @@ export function useIsVisible(ref: React.MutableRefObject<any>) {
     }, [ref]);
 
     return isIntersecting;
+}
+
+export const useWindowDimension = () => {
+    const [dimension, setDimension] = useState([
+        window.innerWidth,
+        window.innerHeight,
+    ]);
+    useEffect(() => {
+        const debouncedResizeHandler = debounce(() => {
+            setDimension([window.innerWidth, window.innerHeight]);
+        }, 300);
+        window.addEventListener("resize", debouncedResizeHandler);
+        return () =>
+            window.removeEventListener("resize", debouncedResizeHandler);
+    }, []);
+    return dimension;
+};
+
+function debounce(fn: Function, ms: number) {
+    let timer: NodeJS.Timeout | number | null;
+    return () => {
+        clearTimeout(timer as number);
+        timer = setTimeout(function () {
+            timer = null;
+            fn.apply({}, arguments);
+        }, ms);
+    };
 }
