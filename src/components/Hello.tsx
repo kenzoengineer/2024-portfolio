@@ -7,7 +7,7 @@ const HEIGHT = 2;
 
 const Hello = () => {
     return (
-        <div className="w-screen max-h-[80vh] text-b-black grid grid-cols-2 font-bold">
+        <div className="w-screen md:max-h-[80vh] text-b-black md:grid md:grid-cols-2 font-bold">
             <div className="flex flex-col justify-center items-center">
                 <div className="flex">
                     {Array(WIDTH)
@@ -32,13 +32,15 @@ const Hello = () => {
                         </div>
                     ))}
             </div>
-            <div className="bg-b-yellow p-16 flex flex-col justify-center h-[80vh]">
-                <div className="flex items-center">
-                    <h1 className="text-9xl mr-4">Hello</h1>
-                    <BEye />
-                    <BDot color="bg-b-black" />
-                    <BDot color="bg-b-red" />
-                    <BDot color="bg-b-blue" />
+            <div className="bg-b-yellow p-16 flex flex-col justify-center md:h-[80vh]">
+                <div className="flex max-md:flex-col-reverse items-center">
+                    <h1 className="text-9xl md:mr-4">Hello</h1>
+                    <div className="flex items-center">
+                        <BEye />
+                        <BDot color="bg-b-black" />
+                        <BDot color="bg-b-red" />
+                        <BDot color="bg-b-blue" />
+                    </div>
                 </div>
                 <div>
                     <p>

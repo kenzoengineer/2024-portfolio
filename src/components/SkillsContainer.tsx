@@ -24,12 +24,12 @@ const iconClass = "w-12 h-12 text-b-white";
 
 const SkillsContainer = () => {
     return (
-        <div className="flex flex-col ml-10">
+        <div className="flex flex-col max-md:mt-10 ml-10">
             <div className="mb-10">
                 <div className="flex">
                     <h1 className="text-3xl font-thin">LANGUAGES</h1>
                 </div>
-                <div className="flex">
+                <div className="flex flex-wrap max-md:w-screen max-md:gap-y-7">
                     <IconContainer bg={"bg-b-blue"}>
                         <SiJavascript className={iconClass} />
                     </IconContainer>
@@ -54,7 +54,7 @@ const SkillsContainer = () => {
                 <div className="flex">
                     <h1 className="text-3xl font-thin">FRAMEWORKS</h1>
                 </div>
-                <div className="flex">
+                <div className="flex flex-wrap max-md:w-screen max-md:gap-y-7">
                     <IconContainer bg={"bg-b-yellow"}>
                         <SiReact className={iconClass} />
                     </IconContainer>
@@ -76,7 +76,7 @@ const SkillsContainer = () => {
                 <div className="flex">
                     <h1 className="text-3xl font-thin">TOOLS</h1>
                 </div>
-                <div className="flex">
+                <div className="flex flex-wrap max-md:w-screen max-md:gap-y-7">
                     <IconContainer bg={"bg-b-red"}>
                         <FaGitAlt className={iconClass} />
                     </IconContainer>

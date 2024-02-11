@@ -2,10 +2,7 @@ import { fadeIn, useWindowDimension } from "../consts";
 import { FiGithub, FiLinkedin, FiInstagram, FiMail } from "react-icons/fi";
 import Button from "./Button";
 import BRoundSquares from "./bauhaus/BRoundSquares";
-import { useCallback, useEffect, useRef, useState } from "react";
-
-const WIDTH = 6;
-//const HEIGHT = 4;
+import { useCallback, useEffect, useState } from "react";
 
 const Hero = () => {
     let [height, setHeight] = useState<number>(
@@ -18,8 +15,14 @@ const Hero = () => {
     let [windowWidth, windowHeight] = useWindowDimension();
 
     const updateDims = useCallback(() => {
-        setHeight(Math.floor(windowHeight / 200));
-        setWidth(Math.floor(windowWidth / 350));
+        // max-md is 768
+        if (windowWidth < 768) {
+            setWidth(Math.floor(windowWidth / 150));
+            setHeight(2);
+        } else {
+            setWidth(Math.floor(windowWidth / 350));
+            setHeight(Math.floor(windowHeight / 200));
+        }
     }, [windowHeight, windowWidth]);
 
     useEffect(() => {
@@ -27,25 +30,25 @@ const Hero = () => {
     }, [windowHeight, windowWidth]);
 
     return (
-        <div className="w-screen h-screen bg-b-white flex justify-center">
-            <div className="text-b-black pr-10 text-right h-screen flex flex-col justify-center">
+        <div className="w-screen h-screen bg-b-white flex max-md:flex-col justify-center">
+            <div className="text-b-black max-md:pb-10 pr-5 md:pr-10 text-right md:h-screen flex flex-col justify-center">
                 <h1
-                    className={`text-bigger font-medium h-[8rem] ${fadeIn[0]} fadeIn`}
+                    className={`text-9xl md:text-bigger font-medium h-[4rem] md:h-[6rem] ${fadeIn[0]} fadeIn`}
                 >
                     KEN
                 </h1>
                 <h1
-                    className={`text-huge font-extrabold h-[14rem] ${fadeIn[1]} fadeIn`}
+                    className={`text-bigger md:text-huge font-extrabold h-[12rem] md:h-[14rem] ${fadeIn[1]} fadeIn`}
                 >
                     JIANG
                 </h1>
                 <p className={`text-2xl font-thin ${fadeIn[2]} `}>
                     Software Engineer @{" "}
-                    <span className="font-medium">Vontive</span>
+                    <span className="font-bold">Vontive</span>
                 </p>
                 <p className={`text-2xl font-thin ${fadeIn[3]} `}>
                     Computer Engineering @{" "}
-                    <span className="font-medium">UWaterloo</span>
+                    <span className="font-bold">UWaterloo</span>
                 </p>
                 <div className="flex mt-4 justify-end">
                     <Button bg={"bg-b-black"} i={4}>
@@ -62,7 +65,7 @@ const Hero = () => {
                     </Button>
                 </div>
             </div>
-            <div className="flex flex-col">
+            <div className="flex flex-col max-md:h-1/2 overflow-x-hidden">
                 {Array(height)
                     .fill(1)
                     .map((x, i) => (
@@ -75,7 +78,7 @@ const Hero = () => {
                         </div>
                     ))}
                 <div
-                    className={`font-black text-xl fadeIn ${fadeIn[8]} bg-b-black w-52 p-1 text-center`}
+                    className={`font-black text-xl fadeIn ${fadeIn[8]} bg-b-black w-64 p-1 text-center`}
                 >
                     <span className="text-b-white">KEN JIANG - </span>
                     <span className="text-b-red">江</span>
