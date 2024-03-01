@@ -32,11 +32,20 @@ const Hero = () => {
     return (
         <div className="w-screen h-screen bg-b-white flex max-md:flex-col justify-center">
             <div className="text-b-black max-md:pb-10 pr-5 md:pr-10 text-right md:h-screen flex flex-col justify-center">
-                <h1
-                    className={`text-9xl md:text-bigger font-medium h-[4rem] md:h-[6rem] ${fadeIn[0]} fadeIn`}
-                >
-                    KEN
-                </h1>
+                <div className="flex items-center justify-end">
+                    <div
+                        className={`font-black text-xl fadeIn ${fadeIn[0]} bg-b-black p-1 text-center w-min`}
+                    >
+                        <div className="text-b-red">江</div>
+                        <div className="text-b-blue">华</div>
+                        <div className="text-b-yellow">栋</div>
+                    </div>
+                    <h1
+                        className={`text-9xl md:text-bigger font-medium h-[4rem] md:h-[6rem] ${fadeIn[0]} fadeIn w-min`}
+                    >
+                        KEN
+                    </h1>
+                </div>
                 <h1
                     className={`text-bigger md:text-huge font-extrabold h-[12rem] md:h-[14rem] ${fadeIn[1]} fadeIn`}
                 >
@@ -78,7 +87,7 @@ const Hero = () => {
                         </div>
                     ))}
                 <div
-                    className={`font-black text-xl fadeIn ${fadeIn[8]} bg-b-black w-64 p-1 text-center`}
+                    className={`font-black text-xl fadeIn ${fadeIn[8]} bg-b-black w-52 p-1 text-center`}
                 >
                     <span className="text-b-white">KEN JIANG - </span>
                     <span className="text-b-red">江</span>

@@ -5,6 +5,7 @@ interface BAngularSquaresProp {
 }
 
 const fgColors = ["fill-b-red", "fill-b-blue", "fill-b-yellow", "fill-b-black"];
+const bgColors = ["bg-b-red", "bg-b-blue", "bg-b-yellow", "bg-b-black"];
 
 const directions = [
     "0,0 96,96 0,96", // bl
@@ -24,8 +25,9 @@ const directions = [
 const BAngularSquares = ({ i }: BAngularSquaresProp) => {
     const direction = selectRandom(directions);
     const fgColor = selectRandom(fgColors);
+    const bgColor = selectRandom(bgColors);
     return (
-        <div className={`w-24 h-24 bg-transparent ${fadeIn[i ?? 0]} fadeIn`}>
+        <div className={`w-24 h-24 ${bgColor} ${fadeIn[i ?? 0]} fadeIn`}>
             <svg className={`h-24 w-24 ${fgColor}`}>
                 <polygon points={direction} />
             </svg>

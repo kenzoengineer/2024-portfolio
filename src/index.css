@@ -2,6 +2,11 @@
 @tailwind components;
 @tailwind utilities;
 
+* {
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+}
+
 body {
     margin: 0;
     -webkit-font-smoothing: antialiased;
@@ -60,4 +65,8 @@ body {
 .text-stroke {
     -webkit-text-stroke: 3px black;
     text-stroke: 3px black;
+}
+
+.preserve {
+    transform-style: preserve-3d;
 }
