@@ -6,7 +6,7 @@ import Experience from "./components/Experience";
 
 const App = () => {
     return (
-        <div className="App bg-b-white overflow-x-hidden">
+        <div className="App bg-b-white">
             <Hero />
             <Hello />
             <Skills />

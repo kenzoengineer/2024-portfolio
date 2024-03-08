@@ -7,6 +7,10 @@
     -webkit-backface-visibility: hidden;
 }
 
+html {
+    overflow-x: hidden;
+}
+
 body {
     margin: 0;
     -webkit-font-smoothing: antialiased;
@@ -27,6 +31,23 @@ body {
 
     100% {
         opacity: 1;
+    }
+}
+
+.infiniteSlide {
+    animation-name: infiniteSlideKeyframes;
+    animation-timing-function: linear;
+    animation-duration: 1000ms;
+    animation-iteration-count: infinite;
+}
+
+@keyframes infiniteSlideKeyframes {
+    0% {
+        transform: translateX(-100%);
+    }
+
+    100% {
+        transform: translateX(100%);
     }
 }
 

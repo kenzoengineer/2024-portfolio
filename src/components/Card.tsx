@@ -7,7 +7,8 @@ export interface CardProps {
     title: string;
     location: string;
     dates: string;
-    content: string;
+    content: React.ReactNode | string;
+    stack: string;
     children?: React.ReactNode;
 }
 
@@ -16,6 +17,7 @@ const Card = ({
     company,
     location,
     dates,
+    stack,
     content,
     children,
 }: CardProps) => {
@@ -24,8 +26,12 @@ const Card = ({
     const cardElem = useRef<HTMLDivElement>(null);
     const [flipped, setFlipped] = useState(false);
 
+    const mouseEnterHandler = () => {
+        cardContainerElem.current!.classList.add("z-20");
+    };
     const mouseLeaveHandler = () => {
         cardElem.current!.classList.add("transition-transform");
+        cardContainerElem.current!.classList.remove("z-20");
         cardElem.current!.style.transform = "";
     };
     const mouseHandler = (e: MouseEvent | null) => {
@@ -47,13 +53,14 @@ const Card = ({
 
     return (
         <div
-            className={`mx-3 ${dims}`}
+            className={`m-3 ${dims}`}
             onClick={handleFlip}
+            onMouseEnter={mouseEnterHandler}
             onMouseMove={mouseHandler}
             onMouseLeave={mouseLeaveHandler}
         >
             <div
-                className={`cursor-pointer preserve transition-transform ${flipped && "[transform:rotateY(180deg)]"} duration-1000 relative`}
+                className={`cursor-pointer preserve transition-transform ${flipped && "[transform:rotateY(180deg)]"} duration-500 relative`}
                 ref={cardContainerElem}
             >
                 <div
@@ -73,6 +80,10 @@ const Card = ({
                 <div
                     className={`bg-b-white absolute [transform:rotateY(180deg)] p-5 ${dims}`}
                 >
+                    <div className="bg-b-black text-b-white px-2 py-1 mb-4">
+                        <span className="font-bold mr-2">Stack:</span>
+                        {stack}
+                    </div>
                     {content}
                 </div>
             </div>

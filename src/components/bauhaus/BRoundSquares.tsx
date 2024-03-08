@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { fadeIn, selectRandom } from "../../consts";
 
 interface BRoundSquaresProp {
@@ -44,9 +45,13 @@ const BRoundSquares = ({ i }: BRoundSquaresProp) => {
     const innerColor = selectRandom(
         bgColor === "bg-b-white" ? colorsSansWhite : colors,
     );
+
+    const [_, r] = useState(0);
+
     return (
         <div
             className={`relative z-10 w-48 h-48 ${bgColor} ${fadeIn[i ?? 0]} fadeIn`}
+            onMouseEnter={() => r(Math.random())}
         >
             <div className={`relative ${outerColor} w-48 h-48 ${direction}`}>
                 <div

@@ -31,15 +31,8 @@ const Hero = () => {
 
     return (
         <div className="w-screen h-screen bg-b-white flex max-md:flex-col justify-center">
-            <div className="text-b-black max-md:pb-10 pr-5 md:pr-10 text-right md:h-screen flex flex-col justify-center">
-                <div className="flex items-center justify-end">
-                    <div
-                        className={`font-black text-xl fadeIn ${fadeIn[0]} bg-b-black p-1 text-center w-min`}
-                    >
-                        <div className="text-b-red">江</div>
-                        <div className="text-b-blue">华</div>
-                        <div className="text-b-yellow">栋</div>
-                    </div>
+            <div className="text-b-black md:pl-24 max-md:pb-10 pr-5 md:pr-10 text-center md:text-right md:h-screen flex flex-col justify-center">
+                <div className="flex items-center justify-center md:justify-end">
                     <h1
                         className={`text-9xl md:text-bigger font-medium h-[4rem] md:h-[6rem] ${fadeIn[0]} fadeIn w-min`}
                     >
@@ -59,7 +52,14 @@ const Hero = () => {
                     Computer Engineering @{" "}
                     <span className="font-bold">UWaterloo</span>
                 </p>
-                <div className="flex mt-4 justify-end">
+                <div className="flex mt-4 justify-center items-center md:justify-end">
+                    <div
+                        className={`font-black text-xl fadeIn ${fadeIn[4]} bg-b-black text-center px-3 py-1 h-min`}
+                    >
+                        <span className="text-b-red">江</span>
+                        <span className="text-b-blue">华</span>
+                        <span className="text-b-yellow">栋</span>
+                    </div>
                     <Button bg={"bg-b-black"} i={4}>
                         <FiGithub className="w-8 h-8 text-b-white" />
                     </Button>
@@ -86,14 +86,6 @@ const Hero = () => {
                                 ))}
                         </div>
                     ))}
-                <div
-                    className={`font-black text-xl fadeIn ${fadeIn[8]} bg-b-black w-52 p-1 text-center`}
-                >
-                    <span className="text-b-white">KEN JIANG - </span>
-                    <span className="text-b-red">江</span>
-                    <span className="text-b-blue">华</span>
-                    <span className="text-b-yellow">栋</span>
-                </div>
             </div>
         </div>
     );

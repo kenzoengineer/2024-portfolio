@@ -1,22 +1,37 @@
-import BDot from "./bauhaus/BDot";
-import BEye from "./bauhaus/BEye";
+import { useEffect, useRef } from "react";
+import { useIsVisible } from "../consts";
 
 const Hello = () => {
+    const ref = useRef<HTMLDivElement>(null);
+    const isVisible = useIsVisible(ref);
+    useEffect(() => {
+        if (isVisible) {
+            document
+                .querySelector(".polaroid")!
+                .classList.remove("translate-y-[-130%]");
+            document
+                .querySelector(".polaroid-image")!
+                .classList.remove("opacity-0");
+        }
+    }, [isVisible]);
     return (
-        <div className=" md:h-[50vh] text-b-black md:grid md:grid-cols-2 font-bold">
-            <div className="flex flex-col justify-center items-center">
-                <div className="flex flex-col items-center bg-b-white border-b-black border-4 p-6 mb-8">
+        <div className=" text-b-black md:grid md:grid-cols-2 font-bold">
+            <div
+                className="flex flex-col justify-center items-center overflow-y-hidden"
+                ref={ref}
+            >
+                <div className="flex flex-col items-center bg-b-white p-6 mb-8 shadow-xl md:shadow-2xl translate-y-[-130%] transition-transform duration-1000 polaroid">
                     <img
                         src="./imgs/ken.png"
-                        className={`w-96 aspect-square`}
+                        className="w-64 lg:w-96 aspect-square polaroid-image opacity-0 duration-[2000ms] delay-1000"
                     ></img>
                     <div className="flex h-20 items-center justify-center">
                         Me
                     </div>
                 </div>
             </div>
-            <div className="pr-48 flex flex-col justify-center md:w-[40vw]">
-                <div>
+            <div className="p-16 md:min-h-[50vh] md:pr-24 xl:pr-48 flex flex-col justify-center">
+                <div className="font-medium">
                     <h1 className="font-thin text-5xl mb-8">
                         Since the day I attained sentience, I've loved
                         <span className="font-bold"> creating.</span>

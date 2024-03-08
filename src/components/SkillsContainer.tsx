@@ -29,7 +29,7 @@ interface SkillsContainerProps {
 
 const SkillsContainer = ({ setHovered }: SkillsContainerProps) => {
     return (
-        <div className="flex flex-col max-md:mt-10 ml-10">
+        <div className="flex flex-col max-md:mt-10 ml-24 md:ml-10">
             <div className="mb-10">
                 <div className="flex">
                     <h1 className="text-3xl font-thin">LANGUAGES</h1>
