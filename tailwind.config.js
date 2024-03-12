@@ -19,8 +19,10 @@ module.exports = {
                 "b-black": "#2e252c",
             },
             backgroundImage: {
-                stripes:
-                    "repeating-linear-gradient(45deg, #2e252c, #2e252c 20px, #00000000 20px,#00000000 40px);",
+                hstripes:
+                    "repeating-linear-gradient(0deg, #fffdff, #fffdff 15px, #00000000 15px,#00000000 30px);",
+                vstripes:
+                    "repeating-linear-gradient(90deg, #fffdff, #fffdff 15px, #00000000 15px,#00000000 30px);",
             },
             boxShadow: {
                 hard: "0 0 0 0 #2e252c",

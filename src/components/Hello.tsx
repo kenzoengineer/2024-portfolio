@@ -1,9 +1,11 @@
 import { useEffect, useRef } from "react";
 import { useIsVisible } from "../consts";
+import BShells from "./bauhaus/BShells";
+import BShellsContainer from "./bauhaus/BShellsContainer";
 
 const Hello = () => {
-    const ref = useRef<HTMLDivElement>(null);
-    const isVisible = useIsVisible(ref);
+    const photoRef = useRef<HTMLDivElement>(null);
+    const isVisible = useIsVisible(photoRef);
     useEffect(() => {
         if (isVisible) {
             document
@@ -18,7 +20,7 @@ const Hello = () => {
         <div className=" text-b-black md:grid md:grid-cols-2 font-bold">
             <div
                 className="flex flex-col justify-center items-center overflow-y-hidden"
-                ref={ref}
+                ref={photoRef}
             >
                 <div className="flex flex-col items-center bg-b-white p-6 mb-8 shadow-xl md:shadow-2xl translate-y-[-130%] transition-transform duration-1000 polaroid">
                     <img
@@ -30,7 +32,10 @@ const Hello = () => {
                     </div>
                 </div>
             </div>
-            <div className="p-16 md:min-h-[50vh] md:pr-24 xl:pr-48 flex flex-col justify-center">
+            <div className="p-16 md:min-h-[50vh] md:pr-24 xl:pr-48 flex flex-col justify-center md:max-w-[40vw]">
+                <div className="absolute">
+                    <BShellsContainer width={4} height={3} />
+                </div>
                 <div className="font-medium">
                     <h1 className="font-thin text-5xl mb-8">
                         Since the day I attained sentience, I've loved

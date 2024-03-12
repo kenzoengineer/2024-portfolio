@@ -34,23 +34,6 @@ body {
     }
 }
 
-.infiniteSlide {
-    animation-name: infiniteSlideKeyframes;
-    animation-timing-function: linear;
-    animation-duration: 1000ms;
-    animation-iteration-count: infinite;
-}
-
-@keyframes infiniteSlideKeyframes {
-    0% {
-        transform: translateX(-100%);
-    }
-
-    100% {
-        transform: translateX(100%);
-    }
-}
-
 .slideRight {
     animation-name: slideRightKeyframes;
     animation-duration: 2000ms;
@@ -80,6 +63,33 @@ body {
 
     100% {
         transform: translateX(0);
+    }
+}
+
+.popOut {
+    animation-name: pop;
+    animation-duration: 1000ms;
+    animation-fill-mode: forwards;
+}
+
+@keyframes pop {
+    50% {
+        transform: scale(1);
+    }
+
+    60% {
+        transform: scale(1.2);
+        background-color: inherit;
+    }
+
+    65% {
+        transform: scale(1);
+        background-color: transparent;
+    }
+
+    100% {
+        transform: scale(1);
+        background-color: transparent;
     }
 }
 

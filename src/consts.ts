@@ -17,14 +17,17 @@ export const selectRandom = (arr: any[]) => {
     return arr[Math.floor(Math.random() * arr.length)];
 };
 
-export function useIsVisible(ref: React.MutableRefObject<any>) {
+export function useIsVisible(
+    ref: React.MutableRefObject<any>,
+    threshold = 0.6,
+) {
     const [isIntersecting, setIntersecting] = useState(false);
 
     useEffect(() => {
         const observer = new IntersectionObserver(
             ([entry]) => setIntersecting(entry.isIntersecting),
             {
-                threshold: 0.6,
+                threshold: threshold,
             },
         );
 
