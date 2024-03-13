@@ -41,7 +41,7 @@ const experiences: CardProps[] = [
             <div>
                 <p className="mb-4">
                     Senstar's video management system product was a WinForms
-                    desktop application, built using <p>.NET Core</p>
+                    desktop application, built using <b>.NET Core</b>
                 </p>
                 <p className="mb-4">
                     I got to apply a lot of the lower level software concepts I

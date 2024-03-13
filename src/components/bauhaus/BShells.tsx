@@ -13,9 +13,10 @@ const directions = [
 interface BShellsProps {
     randoms: number[];
     parent: React.RefObject<HTMLDivElement>;
+    setRemoved: React.Dispatch<boolean>;
 }
 
-const BShells = ({ parent, randoms }: BShellsProps) => {
+const BShells = ({ parent, randoms, setRemoved }: BShellsProps) => {
     let fg1 = fgColors[randoms[0]];
     let fg2 = fgColors[randoms[1]];
     const bg = bgColors[randoms[2]];
@@ -46,6 +47,9 @@ const BShells = ({ parent, randoms }: BShellsProps) => {
             refs[2].current!.classList.add(
                 randoms[0] < 2 ? "delay-[1500ms]" : "delay-[2250ms]",
             );
+            setTimeout(() => {
+                setRemoved(true);
+            }, 2550);
         }
     }, [isVisible]);
 

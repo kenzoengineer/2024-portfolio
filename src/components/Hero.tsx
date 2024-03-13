@@ -1,10 +1,15 @@
-import { fadeIn, useWindowDimension } from "../consts";
+import { fadeIn } from "../consts";
 import { FiGithub, FiLinkedin, FiInstagram, FiMail } from "react-icons/fi";
 import Button from "./Button";
 import BRoundSquares from "./bauhaus/BRoundSquares";
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useContext, useEffect, useState } from "react";
+import { WindowContext } from "../App";
+
+import PDF from "../Ken_Jiang_Feb_2024.pdf";
 
 const Hero = () => {
+    const { windowWidth, windowHeight } = useContext(WindowContext);
+
     let [height, setHeight] = useState<number>(
         // TODO: ADD CLAMPING
         Math.floor(window.innerHeight / 200),
@@ -12,8 +17,6 @@ const Hero = () => {
     let [width, setWidth] = useState<number>(
         Math.floor(window.innerWidth / 350),
     );
-    let [windowWidth, windowHeight] = useWindowDimension();
-
     const updateDims = useCallback(() => {
         // max-md is 768
         if (windowWidth < 768) {
@@ -53,23 +56,46 @@ const Hero = () => {
                     <span className="font-bold">UWaterloo</span>
                 </p>
                 <div className="flex mt-4 justify-center items-center md:justify-end">
-                    <div
-                        className={`font-black text-xl fadeIn ${fadeIn[4]} bg-b-black text-center px-3 py-1 h-min`}
+                    <a
+                        href={PDF}
+                        target="_blank"
+                        className={`relative font-black text-xl fadeIn ${fadeIn[4]} bg-b-white h-8 w-28 hover:scale-105 transition-transform`}
                     >
-                        <span className="text-b-red">江</span>
-                        <span className="text-b-blue">华</span>
-                        <span className="text-b-yellow">栋</span>
-                    </div>
-                    <Button bg={"bg-b-black"} i={4}>
+                        <div className="absolute flex justify-center items-center w-28 h-8 hover:opacity-0 transition-opacity duration-300 bg-b-white z-10 border-2 border-b-black">
+                            <span className="text-b-red pr-1">江</span>
+                            <span className="text-b-blue px-1">华</span>
+                            <span className="text-b-yellow pl-1">栋</span>
+                        </div>
+                        <div className="absolute flex justify-center items-center w-28 h-8 text-b-black font-medium transition-colors border-2 border-b-black">
+                            Resume
+                        </div>
+                    </a>
+                    <Button
+                        bg={"bg-b-black"}
+                        i={4}
+                        to={"https://github.com/kenzoengineer"}
+                    >
                         <FiGithub className="w-8 h-8 text-b-white" />
                     </Button>
-                    <Button bg={"bg-b-blue"} i={5}>
+                    <Button
+                        bg={"bg-b-blue"}
+                        i={5}
+                        to={"https://www.linkedin.com/in/ken-jiang/"}
+                    >
                         <FiLinkedin className="w-8 h-8 text-b-white" />
                     </Button>
-                    <Button bg={"bg-b-yellow"} i={6}>
+                    <Button
+                        bg={"bg-b-yellow"}
+                        i={6}
+                        to={"https://www.instagram.com/kenzoengineer"}
+                    >
                         <FiInstagram className="w-8 h-8 text-b-white" />
                     </Button>
-                    <Button bg={"bg-b-red"} i={7}>
+                    <Button
+                        bg={"bg-b-red"}
+                        i={7}
+                        to={"mailto:ken.jiang@uwaterloo.ca"}
+                    >
                         <FiMail className="w-8 h-8 text-b-white" />
                     </Button>
                 </div>

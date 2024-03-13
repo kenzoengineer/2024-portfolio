@@ -1,9 +1,28 @@
-import { useEffect, useRef } from "react";
+import { useContext, useEffect, useRef } from "react";
 import { useIsVisible } from "../consts";
-import BShells from "./bauhaus/BShells";
 import BShellsContainer from "./bauhaus/BShellsContainer";
+import { WindowContext } from "../App";
 
 const Hello = () => {
+    const { windowWidth } = useContext(WindowContext);
+
+    const width = Math.floor(
+        windowWidth < 768 ? windowWidth / 192 : windowWidth / (192 * 2.5),
+    );
+
+    const height = (() => {
+        if (windowWidth >= 1917) {
+            return 3;
+        } else if (windowWidth >= 1429) {
+            return 4;
+        } else if (windowWidth >= 917) {
+            return 5;
+        } else if (windowWidth >= 768) {
+            return 6;
+        }
+        return 4;
+    })();
+
     const photoRef = useRef<HTMLDivElement>(null);
     const isVisible = useIsVisible(photoRef);
     useEffect(() => {
@@ -34,7 +53,7 @@ const Hello = () => {
             </div>
             <div className="p-16 md:min-h-[50vh] md:pr-24 xl:pr-48 flex flex-col justify-center md:max-w-[40vw]">
                 <div className="absolute">
-                    <BShellsContainer width={4} height={3} />
+                    <BShellsContainer width={width} height={height} />
                 </div>
                 <div className="font-medium">
                     <h1 className="font-thin text-5xl mb-8">

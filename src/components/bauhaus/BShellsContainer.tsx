@@ -7,6 +7,7 @@ interface BShellsContainerProps {
 }
 
 const BShellsContainer = ({ height, width }: BShellsContainerProps) => {
+    const [blocksRemoved, setBlocksRemoved] = useState(false);
     const parentRef = useRef<HTMLDivElement>(null);
     const [randoms, setRandoms] = useState(Array(height * width));
     useEffect(() => {
@@ -22,28 +23,30 @@ const BShellsContainer = ({ height, width }: BShellsContainerProps) => {
     }, []);
     return (
         <div ref={parentRef}>
-            {Array(height)
-                .fill(1)
-                .map((_, i) => {
-                    return (
-                        <div className="flex">
-                            {Array(width)
-                                .fill(1)
-                                .map((_, j) => {
-                                    return (
-                                        <BShells
-                                            parent={parentRef}
-                                            randoms={
-                                                !randoms[j + i * width]
-                                                    ? [0, 0, 0, 0]
-                                                    : randoms[j + i * width]
-                                            }
-                                        />
-                                    );
-                                })}
-                        </div>
-                    );
-                })}
+            {!blocksRemoved &&
+                Array(height)
+                    .fill(1)
+                    .map((_, i) => {
+                        return (
+                            <div className="flex">
+                                {Array(width)
+                                    .fill(1)
+                                    .map((_, j) => {
+                                        return (
+                                            <BShells
+                                                parent={parentRef}
+                                                randoms={
+                                                    !randoms[j + i * width]
+                                                        ? [0, 0, 0, 0]
+                                                        : randoms[j + i * width]
+                                                }
+                                                setRemoved={setBlocksRemoved}
+                                            />
+                                        );
+                                    })}
+                            </div>
+                        );
+                    })}
         </div>
     );
 };
