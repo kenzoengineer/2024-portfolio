@@ -6,9 +6,14 @@ import { WindowContext } from "../App";
 const Hello = () => {
     const { windowWidth } = useContext(WindowContext);
 
-    const width = Math.floor(
-        windowWidth < 768 ? windowWidth / 192 : windowWidth / (192 * 2.5),
-    );
+    const width = (() => {
+        if (windowWidth > 768) {
+            return Math.floor(windowWidth / (192 * 2.5));
+        } else if (windowWidth > 640) {
+            return Math.floor(windowWidth / 192);
+        }
+        return 2;
+    })();
 
     const height = (() => {
         if (windowWidth >= 1917) {
@@ -52,7 +57,7 @@ const Hello = () => {
                 </div>
             </div>
             <div className="p-16 md:min-h-[50vh] md:pr-24 xl:pr-48 flex flex-col justify-center md:max-w-[40vw]">
-                <div className="absolute">
+                <div className="max-sm:-m-8 absolute">
                     <BShellsContainer width={width} height={height} />
                 </div>
                 <div className="font-medium">

@@ -1,5 +1,8 @@
+import { useContext } from "react";
 import Card, { CardProps } from "./Card";
 import BAngularSquares from "./bauhaus/BAngularSquares";
+import { WindowContext } from "../App";
+import { BREAKPOINT_SMALL } from "../consts";
 
 const experiences: CardProps[] = [
     {
@@ -168,19 +171,23 @@ const experiences: CardProps[] = [
 ];
 
 const Experience = () => {
+    const { windowWidth } = useContext(WindowContext);
+
     return (
-        <div className="bg-b-black min-h-screen p-12 md:px-36 md:py-16">
-            <div className="text-b-white text-8xl lg:text-bigger mb-10">
+        <div className="bg-b-black min-h-screen sm:p-12 md:px-36 md:py-16">
+            <div className="text-b-white text-5xl max-sm:p-12 md:text-8xl lg:text-bigger md:mb-10">
                 WORK <span className="font-black">EXPERIENCE</span>
             </div>
             <div className="flex flex-wrap justify-center">
                 {experiences.map((x) => (
                     <Card {...x}>
-                        {Array(4)
+                        {Array(windowWidth < BREAKPOINT_SMALL ? 5 : 4)
                             .fill(1)
                             .map((x, i) => (
                                 <div className={`flex`}>
-                                    {Array(4)
+                                    {Array(
+                                        windowWidth < BREAKPOINT_SMALL ? 3 : 4,
+                                    )
                                         .fill(1)
                                         .map((x, j) => (
                                             <BAngularSquares i={j} />

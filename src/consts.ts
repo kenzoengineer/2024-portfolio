@@ -66,3 +66,5 @@ function debounce(fn: Function, ms: number) {
         }, ms);
     };
 }
+
+export const BREAKPOINT_SMALL = 640;

@@ -1,6 +1,6 @@
 import { MouseEvent, useRef, useState } from "react";
 
-const dims = "w-[28em] h-[38em]";
+const dims = "w-[23em] md:w-[28em] h-[42em] md:h-[38em]";
 
 export interface CardProps {
     company: string;
@@ -67,18 +67,22 @@ const Card = ({
                     className={`bg-b-white text-b-black p-5 shadow-2xl absolute ${dims}`}
                     ref={cardElem}
                 >
-                    <div className="font-black text-7xl mb-3">{company}</div>
+                    <div className="font-black text-5xl md:text-7xl mb-3">
+                        {company}
+                    </div>
                     <div className="flex items-center mb-2">
-                        <div className="text-xl bg-b-black text-b-white font-bold py-1 px-3 mr-3">
+                        <div className="text-sm md:text-xl bg-b-black text-b-white font-bold py-1 px-3 mr-3">
                             {title}
                         </div>
-                        <div className="text-xl font-thin">{location}</div>
+                        <div className="text-sm md:text-xl font-thin">
+                            {location}
+                        </div>
                     </div>
                     <div className="flex flex-col items-center">{children}</div>
                     <div className="mt-2">{dates}</div>
                 </div>
                 <div
-                    className={`bg-b-white absolute [transform:rotateY(180deg)] p-5 ${dims}`}
+                    className={`bg-b-white absolute [transform:rotateY(180deg)] max-sm:text-sm p-5 ${dims}`}
                 >
                     <div className="bg-b-black text-b-white px-2 py-1 mb-4">
                         <span className="font-bold mr-2">Stack:</span>

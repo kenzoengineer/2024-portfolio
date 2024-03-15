@@ -34,7 +34,7 @@ const SkillsContainer = ({ setHovered }: SkillsContainerProps) => {
                 <div className="flex">
                     <h1 className="text-3xl font-thin">LANGUAGES</h1>
                 </div>
-                <div className="flex flex-wrap max-md:w-screen max-md:gap-y-7">
+                <div className="flex flex-wrap max-sm:w-screen max-md:gap-y-7">
                     <IconContainer
                         bg={"bg-b-blue"}
                         name="Javascript"

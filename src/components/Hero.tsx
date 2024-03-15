@@ -37,13 +37,13 @@ const Hero = () => {
             <div className="text-b-black md:pl-24 max-md:pb-10 pr-5 md:pr-10 text-center md:text-right md:h-screen flex flex-col justify-center">
                 <div className="flex items-center justify-center md:justify-end">
                     <h1
-                        className={`text-9xl md:text-bigger font-medium h-[4rem] md:h-[6rem] ${fadeIn[0]} fadeIn w-min`}
+                        className={`text-8xl sm:text-9xl md:text-bigger font-medium h-[5rem] sm:h-[4rem] md:h-[6rem] ${fadeIn[0]} fadeIn w-min`}
                     >
                         KEN
                     </h1>
                 </div>
                 <h1
-                    className={`text-bigger md:text-huge font-extrabold h-[12rem] md:h-[14rem] ${fadeIn[1]} fadeIn`}
+                    className={`text-8xl sm:text-bigger md:text-huge font-extrabold h-[7rem] sm:h-[12rem] md:h-[14rem] ${fadeIn[1]} fadeIn`}
                 >
                     JIANG
                 </h1>
