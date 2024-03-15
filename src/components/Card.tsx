@@ -55,9 +55,9 @@ const Card = ({
         <div
             className={`m-3 ${dims}`}
             onClick={handleFlip}
-            // onMouseEnter={mouseEnterHandler}
-            // onMouseMove={mouseHandler}
-            // onMouseLeave={mouseLeaveHandler}
+            onMouseEnter={mouseEnterHandler}
+            onMouseMove={mouseHandler}
+            onMouseLeave={mouseLeaveHandler}
         >
             <div
                 className={`cursor-pointer preserve transition-transform ${flipped && "[transform:rotateY(180deg)]"} duration-500 relative`}
