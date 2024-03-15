@@ -1,14 +1,14 @@
 {
   "files": {
-    "main.css": "/2024-portfolio/static/css/main.fb94c59e.css",
-    "main.js": "/2024-portfolio/static/js/main.b712c3ae.js",
+    "main.css": "/2024-portfolio/static/css/main.f0de388c.css",
+    "main.js": "/2024-portfolio/static/js/main.2a92389f.js",
     "static/media/Ken_Jiang_Feb_2024.pdf": "/2024-portfolio/static/media/Ken_Jiang_Feb_2024.468818948e346d079c3a.pdf",
     "index.html": "/2024-portfolio/index.html",
-    "main.fb94c59e.css.map": "/2024-portfolio/static/css/main.fb94c59e.css.map",
-    "main.b712c3ae.js.map": "/2024-portfolio/static/js/main.b712c3ae.js.map"
+    "main.f0de388c.css.map": "/2024-portfolio/static/css/main.f0de388c.css.map",
+    "main.2a92389f.js.map": "/2024-portfolio/static/js/main.2a92389f.js.map"
   },
   "entrypoints": [
-    "static/css/main.fb94c59e.css",
-    "static/js/main.b712c3ae.js"
+    "static/css/main.f0de388c.css",
+    "static/js/main.2a92389f.js"
   ]
 }
