@@ -1,5 +1,5 @@
 import { useContext, useEffect, useRef } from "react";
-import { useIsVisible } from "../consts";
+import { BREAKPOINT_MEDIUM, BREAKPOINT_SMALL, useIsVisible } from "../consts";
 import BShellsContainer from "./bauhaus/BShellsContainer";
 import { WindowContext } from "../App";
 
@@ -7,9 +7,9 @@ const Hello = () => {
     const { windowWidth } = useContext(WindowContext);
 
     const width = (() => {
-        if (windowWidth > 768) {
+        if (windowWidth > BREAKPOINT_MEDIUM) {
             return Math.floor(windowWidth / (192 * 2.5));
-        } else if (windowWidth > 640) {
+        } else if (windowWidth > BREAKPOINT_SMALL) {
             return Math.floor(windowWidth / 192);
         }
         return 2;
@@ -57,7 +57,7 @@ const Hello = () => {
                 </div>
             </div>
             <div className="p-16 md:min-h-[50vh] md:pr-24 xl:pr-48 flex flex-col justify-center md:max-w-[40vw]">
-                <div className="max-sm:-m-8 absolute">
+                <div className="max-md:hidden max-sm:-m-8 absolute">
                     <BShellsContainer width={width} height={height} />
                 </div>
                 <div className="font-medium">

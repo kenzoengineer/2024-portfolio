@@ -1,4 +1,4 @@
-import { createContext, useState } from "react";
+import { createContext } from "react";
 import Hello from "./components/Hello";
 import Hero from "./components/Hero";
 import Skills from "./components/Skills";

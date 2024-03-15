@@ -1,6 +1,6 @@
 import { MouseEvent, useRef, useState } from "react";
 
-const dims = "w-[23em] md:w-[28em] h-[42em] md:h-[38em]";
+const dims = "w-[23rem] md:w-[28rem] h-[42rem] md:h-[38rem]";
 
 export interface CardProps {
     company: string;
@@ -55,9 +55,9 @@ const Card = ({
         <div
             className={`m-3 ${dims}`}
             onClick={handleFlip}
-            onMouseEnter={mouseEnterHandler}
-            onMouseMove={mouseHandler}
-            onMouseLeave={mouseLeaveHandler}
+            // onMouseEnter={mouseEnterHandler}
+            // onMouseMove={mouseHandler}
+            // onMouseLeave={mouseLeaveHandler}
         >
             <div
                 className={`cursor-pointer preserve transition-transform ${flipped && "[transform:rotateY(180deg)]"} duration-500 relative`}

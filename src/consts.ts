@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 
 export const fadeIn = [
     "fadeIn animation-delay-[100ms] opacity-0",
@@ -35,7 +35,7 @@ export function useIsVisible(
         return () => {
             observer.disconnect();
         };
-    }, [ref]);
+    }, [ref, threshold]);
 
     return isIntersecting;
 }
@@ -67,4 +67,5 @@ function debounce(fn: Function, ms: number) {
     };
 }
 
+export const BREAKPOINT_MEDIUM = 768;
 export const BREAKPOINT_SMALL = 640;

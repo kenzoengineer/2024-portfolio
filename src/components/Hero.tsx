@@ -1,8 +1,9 @@
-import { fadeIn } from "../consts";
+import { BREAKPOINT_MEDIUM, fadeIn } from "../consts";
 import { FiGithub, FiLinkedin, FiInstagram, FiMail } from "react-icons/fi";
+import { IoMdDesktop } from "react-icons/io";
 import Button from "./Button";
 import BRoundSquares from "./bauhaus/BRoundSquares";
-import { useCallback, useContext, useEffect, useState } from "react";
+import { useContext } from "react";
 import { WindowContext } from "../App";
 
 import PDF from "../Ken_Jiang_Feb_2024.pdf";
@@ -10,34 +11,31 @@ import PDF from "../Ken_Jiang_Feb_2024.pdf";
 const Hero = () => {
     const { windowWidth, windowHeight } = useContext(WindowContext);
 
-    let [height, setHeight] = useState<number>(
-        // TODO: ADD CLAMPING
-        Math.floor(window.innerHeight / 200),
-    );
-    let [width, setWidth] = useState<number>(
-        Math.floor(window.innerWidth / 350),
-    );
-    const updateDims = useCallback(() => {
-        // max-md is 768
-        if (windowWidth < 768) {
-            setWidth(Math.floor(windowWidth / 150));
-            setHeight(2);
-        } else {
-            setWidth(Math.floor(windowWidth / 350));
-            setHeight(Math.floor(windowHeight / 200));
+    const height = (() => {
+        if (windowWidth > BREAKPOINT_MEDIUM) {
+            return Math.floor(windowHeight / 192);
         }
-    }, [windowHeight, windowWidth]);
+        return Math.floor(windowHeight / 2 / 192);
+    })();
 
-    useEffect(() => {
-        updateDims();
-    }, [windowHeight, windowWidth]);
-
+    const width = (() => {
+        if (windowWidth > BREAKPOINT_MEDIUM) {
+            return Math.floor((windowWidth / 192 / 3) * 2);
+        }
+        return Math.floor(windowWidth / 192);
+    })();
     return (
-        <div className="w-screen h-screen bg-b-white flex max-md:flex-col justify-center">
+        <div className="w-screen h-screen bg-b-white flex max-md:flex-col md:justify-center">
+            <div className=" bg-b-black mb-10 p-2 w-screen text-b-white flex items-center justify-center md:hidden">
+                <span className="mr-2 font-medium">
+                    This site looks best on desktop
+                </span>
+                <IoMdDesktop className="text-b-white" />
+            </div>
             <div className="text-b-black md:pl-24 max-md:pb-10 pr-5 md:pr-10 text-center md:text-right md:h-screen flex flex-col justify-center">
                 <div className="flex items-center justify-center md:justify-end">
                     <h1
-                        className={`text-8xl sm:text-9xl md:text-bigger font-medium h-[5rem] sm:h-[4rem] md:h-[6rem] ${fadeIn[0]} fadeIn w-min`}
+                        className={`text-8xl sm:text-9xl md:text-bigger font-medium h-[5rem] sm:h-[6rem] md:h-[8rem] ${fadeIn[0]} fadeIn w-min`}
                     >
                         KEN
                     </h1>
@@ -100,7 +98,7 @@ const Hero = () => {
                     </Button>
                 </div>
             </div>
-            <div className="flex flex-col max-md:h-1/2 overflow-x-hidden">
+            <div className="flex flex-col max-md:h-1/2 overflow-x-hidden max-md:items-center">
                 {Array(height)
                     .fill(1)
                     .map((x, i) => (

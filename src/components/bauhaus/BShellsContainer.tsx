@@ -22,7 +22,7 @@ const BShellsContainer = ({ height, width }: BShellsContainerProps) => {
         }
     }, []);
     return (
-        <div ref={parentRef}>
+        <div ref={parentRef} className="z-10">
             {!blocksRemoved &&
                 Array(height)
                     .fill(1)

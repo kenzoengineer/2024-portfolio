@@ -1,5 +1,3 @@
-import { fadeIn } from "../consts";
-
 interface IconContainerProps {
     children: React.ReactNode;
     bg: string;
