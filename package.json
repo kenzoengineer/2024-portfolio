@@ -1,8 +1,8 @@
 {
     "name": "2024-portfolio",
-    "version": "0.1.0",
+    "version": "1.0.0",
     "private": true,
-    "homepage": "https://kenzoengineer.github.io/2024-portfolio",
+    "homepage": "https://kenjiang.ca",
     "dependencies": {
         "@types/jest": "^27.5.2",
         "@types/node": "^16.18.76",
