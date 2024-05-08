@@ -8,7 +8,7 @@ const experiences: CardProps[] = [
     {
         company: "Vontive",
         title: "Software Engineer",
-        dates: "Jan '24 - Present",
+        dates: "Jan '24 - Apr '24",
         location: "San Francisco",
         stack: "Vue, Vuetify, Typescript, Express, Postgres",
         content: (
@@ -20,14 +20,15 @@ const experiences: CardProps[] = [
                     commercial loan seekers with big capital debt buyers.
                 </p>
                 <p className="mb-4">
-                    I'm working with another intern to integrate e-signing
-                    directly into our platform. We are owning the project from
-                    start to finish, from the initial research, speaking with
-                    shareholders, contacting third parties to discuss pricing,
-                    architecting the software and evaluating metrics.
+                    I worked with another intern to integrate with a third party
+                    electronic signing provider. This allowed our underwriters
+                    to sign and track e-sign requests much faster and simpler.
+                    We owned development of this from beginning to end,
+                    designing the routes, database entity, talking and
+                    negotiating with the provider and pushing it to production.
                 </p>
                 <p className="mb-4">
-                    This will all be done in <b>Typescript</b> using{" "}
+                    This was done in <b>Typescript</b> using{" "}
                     <b>Vue, Vuetify, Express</b> and <b>Postgres</b> with{" "}
                     <b>TypeORM</b>.
                 </p>

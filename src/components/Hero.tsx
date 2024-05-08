@@ -46,8 +46,9 @@ const Hero = () => {
                     JIANG
                 </h1>
                 <p className={`text-2xl font-thin ${fadeIn[2]} `}>
-                    Software Engineer @{" "}
-                    <span className="font-bold">Vontive</span>
+                    Seeking
+                    <span className="font-bold"> Fall '24 </span>
+                    Internships
                 </p>
                 <p className={`text-2xl font-thin ${fadeIn[3]} `}>
                     Computer Engineering @{" "}
@@ -59,11 +60,6 @@ const Hero = () => {
                         target="_blank"
                         className={`relative font-black text-xl fadeIn ${fadeIn[4]} bg-b-white h-8 w-28 hover:scale-105 transition-transform`}
                     >
-                        <div className="absolute flex justify-center items-center w-28 h-8 hover:opacity-0 transition-opacity duration-300 bg-b-white z-10 border-2 border-b-black">
-                            <span className="text-b-red pr-1">江</span>
-                            <span className="text-b-blue px-1">华</span>
-                            <span className="text-b-yellow pl-1">栋</span>
-                        </div>
                         <div className="absolute flex justify-center items-center w-28 h-8 text-b-black font-medium transition-colors border-2 border-b-black">
                             Resume
                         </div>
