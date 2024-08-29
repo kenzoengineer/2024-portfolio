@@ -46,9 +46,7 @@ const Hero = () => {
                     JIANG
                 </h1>
                 <p className={`text-2xl font-thin ${fadeIn[2]} `}>
-                    Seeking
-                    <span className="font-bold"> Fall '24 </span>
-                    Internships
+                    Incoming SWE @<span className="font-bold"> Sentry </span>
                 </p>
                 <p className={`text-2xl font-thin ${fadeIn[3]} `}>
                     Computer Engineering @{" "}
@@ -98,11 +96,11 @@ const Hero = () => {
                 {Array(height)
                     .fill(1)
                     .map((x, i) => (
-                        <div className={`flex ${fadeIn[i]} fadeIn`}>
+                        <div className={`flex ${fadeIn[i]} fadeIn`} key={i}>
                             {Array(width)
                                 .fill(1)
                                 .map((x, j) => (
-                                    <BRoundSquares i={j} />
+                                    <BRoundSquares i={j} key={j} />
                                 ))}
                         </div>
                     ))}

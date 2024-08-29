@@ -180,18 +180,18 @@ const Experience = () => {
                 WORK <span className="font-black">EXPERIENCE</span>
             </div>
             <div className="flex flex-wrap justify-center">
-                {experiences.map((x) => (
-                    <Card {...x}>
+                {experiences.map((x, idx) => (
+                    <Card {...x} key={idx}>
                         {Array(windowWidth < BREAKPOINT_SMALL ? 5 : 4)
                             .fill(1)
                             .map((x, i) => (
-                                <div className={`flex`}>
+                                <div className={`flex`} key={i}>
                                     {Array(
                                         windowWidth < BREAKPOINT_SMALL ? 3 : 4,
                                     )
                                         .fill(1)
                                         .map((x, j) => (
-                                            <BAngularSquares i={j} />
+                                            <BAngularSquares i={j} key={j} />
                                         ))}
                                 </div>
                             ))}

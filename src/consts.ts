@@ -1,5 +1,8 @@
 import { useEffect, useState } from "react";
 
+export const colors = ["#f1522b", "#0077b7", "#ffc81c", "#fffdff", "#2e252c"];
+export const colorsSansWhite = ["#f1522b", "#0077b7", "#ffc81c", "#2e252c"];
+
 export const fadeIn = [
     "fadeIn animation-delay-[100ms] opacity-0",
     "fadeIn animation-delay-[200ms] opacity-0",
@@ -11,6 +14,19 @@ export const fadeIn = [
     "fadeIn animation-delay-[800ms] opacity-0",
     "fadeIn animation-delay-[900ms] opacity-0",
     "fadeIn animation-delay-[1000ms] opacity-0",
+    "fadeIn animation-delay-[1100ms] opacity-0",
+    "fadeIn animation-delay-[1200ms] opacity-0",
+    "fadeIn animation-delay-[1300ms] opacity-0",
+    "fadeIn animation-delay-[1400ms] opacity-0",
+];
+
+export const extend = [
+    "extend animation-delay-[100ms] h-0",
+    "extend animation-delay-[300ms] h-0",
+    "extend animation-delay-[500ms] h-0",
+    "extend animation-delay-[700ms] h-0",
+    "extend animation-delay-[900ms] h-0",
+    "extend animation-delay-[1100ms] h-0",
 ];
 
 export const selectRandom = (arr: any[]) => {
@@ -69,3 +85,17 @@ function debounce(fn: Function, ms: number) {
 
 export const BREAKPOINT_MEDIUM = 768;
 export const BREAKPOINT_SMALL = 640;
+
+export const useMousePosition = () => {
+    const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+    useEffect(() => {
+        const updateMousePosition = (ev: MouseEvent) => {
+            setMousePosition({ x: ev.clientX, y: ev.clientY });
+        };
+        window.addEventListener("mousemove", updateMousePosition);
+        return () => {
+            window.removeEventListener("mousemove", updateMousePosition);
+        };
+    }, []);
+    return mousePosition;
+};

@@ -4,6 +4,7 @@ import Hero from "./components/Hero";
 import Skills from "./components/Skills";
 import Experience from "./components/Experience";
 import { useWindowDimension } from "./consts";
+import Glance from "./components/Glance";
 
 interface WindowDims {
     windowWidth: number;
@@ -23,7 +24,8 @@ const App = () => {
         <div className="App bg-b-white">
             <WindowContext.Provider value={{ windowWidth, windowHeight }}>
                 <Hero />
-                <Hello />
+                <Glance />
+                {/* <Hello /> */}
                 <Skills />
                 <Experience />
             </WindowContext.Provider>

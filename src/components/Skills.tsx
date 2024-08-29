@@ -1,6 +1,7 @@
 import { useState } from "react";
 import SkillsContainer from "./SkillsContainer";
 import BLogs from "./bauhaus/BLogs";
+import PhysicsPane from "./PhysicsPane";
 
 const Skills = () => {
     const [hovered, setHovered] = useState("");
@@ -10,8 +11,8 @@ const Skills = () => {
                 TECHNICAL<span className="font-black"> SKILLS</span>
             </div>
             <div className="flex max-lg:flex-col-reverse items-center justify-center md:mt-10">
-                <BLogs hovered={hovered} />
                 <SkillsContainer setHovered={setHovered} />
+                <PhysicsPane />
             </div>
         </div>
     );

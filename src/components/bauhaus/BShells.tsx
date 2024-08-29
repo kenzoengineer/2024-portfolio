@@ -4,19 +4,17 @@ import { selectRandom, useIsVisible } from "../../consts";
 const fgColors = ["bg-b-yellow", "bg-b-red", "bg-b-blue", "bg-b-black"];
 const bgColors = ["bg-b-black", "bg-b-black", "bg-b-black", "bg-b-black"];
 const directions = [
-    ["flex-col", "rounded-t-full w-48 h-24", "rounded-b-full w-48 h-24", 0],
-    ["flex-col", "rounded-b-full w-48 h-24", "rounded-t-full w-48 h-24", 0],
-    ["", "rounded-r-full h-48 w-24", "rounded-l-full h-48 w-24", 1],
-    ["", "rounded-l-full h-48 w-24", "rounded-r-full h-48 w-24", 1],
+    ["flex-col", "rounded-t-full w-20 h-10", "rounded-b-full w-20 h-10", 0],
+    ["flex-col", "rounded-b-full w-20 h-10", "rounded-t-full w-20 h-10", 0],
+    ["", "rounded-r-full h-20 w-10", "rounded-l-full h-20 w-10", 1],
+    ["", "rounded-l-full h-20 w-10", "rounded-r-full h-20 w-10", 1],
 ];
 
 interface BShellsProps {
     randoms: number[];
-    parent: React.RefObject<HTMLDivElement>;
-    setRemoved: React.Dispatch<boolean>;
 }
 
-const BShells = ({ parent, randoms, setRemoved }: BShellsProps) => {
+const BShells = ({ randoms }: BShellsProps) => {
     let fg1 = fgColors[randoms[0]];
     let fg2 = fgColors[randoms[1]];
     const bg = bgColors[randoms[2]];
@@ -35,27 +33,9 @@ const BShells = ({ parent, randoms, setRemoved }: BShellsProps) => {
         useRef<HTMLDivElement>(null),
     ];
 
-    const isVisible = useIsVisible(parent, 1);
-    useEffect(() => {
-        if (isVisible) {
-            const first = selectRandom([0, 1]);
-            if (first) refs[0].current!.classList.add("delay-[750ms]");
-            refs[0].current!.classList.add("opacity-0", "scale-125");
-            if (!first) refs[1].current!.classList.add("delay-[750ms]");
-            refs[1].current!.classList.add("opacity-0", "scale-125");
-            refs[2].current!.classList.add("opacity-0");
-            refs[2].current!.classList.add(
-                randoms[0] < 2 ? "delay-[1500ms]" : "delay-[2250ms]",
-            );
-            setTimeout(() => {
-                setRemoved(true);
-            }, 2550);
-        }
-    }, [isVisible]);
-
     return (
         <div
-            className={`w-48 h-48 ${bg} ${dir[0]} flex transition-all duration-300`}
+            className={`w-20 h-20 ${bg} ${dir[0]} flex transition-all duration-300`}
             ref={refs[2]}
         >
             <div
