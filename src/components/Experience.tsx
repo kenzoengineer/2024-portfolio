@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { useContext, useEffect, useRef, useState } from "react";
 import Card, { CardProps } from "./Card";
 import { WindowContext } from "../App";
 
@@ -8,7 +8,7 @@ import {
     BsSuitClubFill,
     BsSuitHeartFill,
 } from "react-icons/bs";
-import { colors, selectRandom } from "../consts";
+import { colors, selectRandom, useIsVisible } from "../consts";
 
 const CARD_STYLES = [
     {
@@ -33,7 +33,7 @@ const CARD_STYLES = [
     },
 ];
 
-const experiences: CardProps[] = [
+const _experiences: CardProps[] = [
     {
         company: "Vontive",
         title: "Software Engineer",
@@ -211,14 +211,38 @@ const experiences: CardProps[] = [
 ];
 
 const Experience = () => {
-    const { windowWidth } = useContext(WindowContext);
+    const handRef = useRef<HTMLDivElement>(null);
     const [selectedIdx, setSelectedIdx] = useState(-1);
+    const [experiences, setExperiences] = useState<CardProps[]>([]);
+
+    const isVisible = useIsVisible(handRef);
+    const [appeared, setAppeared] = useState(isVisible);
+
+    useEffect(() => {
+        if (isVisible && !appeared) {
+            setAppeared(true);
+        }
+    }, [isVisible]);
+
+    useEffect(() => {
+        if (!appeared) {
+            return;
+        }
+        const fn = async () => {
+            for (let i = 0; i < _experiences.length; i++) {
+                setExperiences(_experiences.slice(0, i + 1));
+                await new Promise((resolve) => setTimeout(resolve, 300));
+            }
+        };
+        fn();
+    }, [appeared]);
+
     return (
         <div className="bg-b-black min-h-[120vh] sm:p-12 md:px-36 md:py-16">
-            <div className="text-b-white text-5xl max-sm:p-12 md:text-8xl lg:text-bigger md:mb-10">
+            <div className="text-b-white text-5xl max-sm:p-12 md:text-8xl lg:text-bigger md:mb-48">
                 WORK <span className="font-black">EXPERIENCE</span>
             </div>
-            <div className="flex flex-wrap justify-center mt-48">
+            <div className="flex flex-wrap justify-center h-96" ref={handRef}>
                 {experiences.map((x, idx) => (
                     <div
                         key={idx}
@@ -227,15 +251,17 @@ const Experience = () => {
                             transform:
                                 selectedIdx >= 0
                                     ? "translateY(18rem)"
-                                    : `rotate(${-10 + idx * 5}deg) translateY(${(2 - Math.abs((experiences.length - 1) / 2 - idx)) * -30}px)`,
+                                    : `rotate(${-5 * Math.floor(experiences.length / 2) + idx * 5 + (experiences.length % 2 === 0 && idx >= experiences.length / 2 ? 5 : 0)}deg) translateY(${(2 - Math.abs((experiences.length - 1) / 2 - idx)) * -30}px)`,
                         }}
                     >
-                        <Card
-                            {...x}
-                            idx={idx}
-                            selectedIdx={selectedIdx}
-                            setSelectedIdx={setSelectedIdx}
-                        />
+                        <div className="popInInstant">
+                            <Card
+                                {...x}
+                                idx={idx}
+                                selectedIdx={selectedIdx}
+                                setSelectedIdx={setSelectedIdx}
+                            />
+                        </div>
                     </div>
                 ))}
             </div>

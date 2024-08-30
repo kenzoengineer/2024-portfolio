@@ -144,6 +144,34 @@ body {
     }
 }
 
+.popInInstant {
+    animation-name: popInInstantKeyframes;
+    animation-duration: 2000ms;
+    animation-fill-mode: forwards;
+}
+
+@keyframes popInInstantKeyframes {
+    0% {
+        transform: none;
+        transform: rotate(5deg) scale(1);
+    }
+    1% {
+        transform: rotate(5deg) scale(1);
+    }
+    6% {
+        opacity: 1;
+        transform: rotate(5deg) scale(1.05);
+    }
+    11% {
+        opacity: 1;
+        transform: rotate(0deg) scale(1);
+    }
+    100% {
+        opacity: 1;
+        transform: rotate(0deg) scale(1);
+    }
+}
+
 .text-stroke {
     -webkit-text-stroke: 3px black;
     text-stroke: 3px black;
