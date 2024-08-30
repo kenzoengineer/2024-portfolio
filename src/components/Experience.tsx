@@ -1,8 +1,37 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import Card, { CardProps } from "./Card";
-import BAngularSquares from "./bauhaus/BAngularSquares";
 import { WindowContext } from "../App";
-import { BREAKPOINT_SMALL } from "../consts";
+
+import {
+    BsSuitSpadeFill,
+    BsSuitDiamondFill,
+    BsSuitClubFill,
+    BsSuitHeartFill,
+} from "react-icons/bs";
+import { colors, selectRandom } from "../consts";
+
+const CARD_STYLES = [
+    {
+        color: "text-b-black",
+        hex: colors[4],
+        suit: <BsSuitSpadeFill className="text-b-black" />,
+    },
+    {
+        color: "text-b-yellow",
+        hex: colors[2],
+        suit: <BsSuitDiamondFill className="text-b-yellow" />,
+    },
+    {
+        color: "text-b-blue",
+        hex: colors[1],
+        suit: <BsSuitClubFill className="text-b-blue" />,
+    },
+    {
+        color: "text-b-red",
+        hex: colors[0],
+        suit: <BsSuitHeartFill className="text-b-red" />,
+    },
+];
 
 const experiences: CardProps[] = [
     {
@@ -11,9 +40,11 @@ const experiences: CardProps[] = [
         dates: "Jan '24 - Apr '24",
         location: "San Francisco",
         stack: "Vue, Vuetify, Typescript, Express, Postgres",
+        cardStyle: selectRandom(CARD_STYLES),
         content: (
             <div>
-                <p className="mb-4">
+                <p>blah blah blah</p>
+                {/* <p className="mb-4">
                     Vontive is the company I currently work at, right in the
                     heart of San Francisco's Financial District. Vontive creates
                     a whitelabelled mortgage trading platform, connecting
@@ -31,7 +62,7 @@ const experiences: CardProps[] = [
                     This was done in <b>Typescript</b> using{" "}
                     <b>Vue, Vuetify, Express</b> and <b>Postgres</b> with{" "}
                     <b>TypeORM</b>.
-                </p>
+                </p> */}
             </div>
         ),
     },
@@ -41,9 +72,11 @@ const experiences: CardProps[] = [
         dates: "Jan '23 - Apr '23",
         location: "Waterloo",
         stack: ".NET Core, C#, Typescript, SQL Server",
+        cardStyle: selectRandom(CARD_STYLES),
         content: (
             <div>
-                <p className="mb-4">
+                <p>blah blah blah</p>
+                {/* <p className="mb-4">
                     Senstar's video management system product was a WinForms
                     desktop application, built using <b>.NET Core</b>
                 </p>
@@ -62,7 +95,7 @@ const experiences: CardProps[] = [
                     clients old integrations to our new integration standard
                     through a series of <b>Postgres</b> queries using{" "}
                     <b>Entity Framework</b>.
-                </p>
+                </p> */}
             </div>
         ),
     },
@@ -72,9 +105,10 @@ const experiences: CardProps[] = [
         dates: "May '22 - Aug '22",
         location: "Oakville",
         stack: "React, .NET Core, C#, Typescript, Postgres",
+        cardStyle: selectRandom(CARD_STYLES),
         content: (
             <div>
-                <p className="mb-4">
+                {/* <p className="mb-4">
                     Shoplogix brought me out of the ASP.NET world and into the
                     (relatively) modern world of React. I was on the Whiteboard
                     team, which provided software to view factory metrics on
@@ -97,7 +131,8 @@ const experiences: CardProps[] = [
                     Higher level nodes propogate their settings to all lower
                     nodes. Lower level nodes can also override by setting their
                     own configuration.
-                </p>
+                </p> */}
+                <p>blah blah blah</p>
             </div>
         ),
     },
@@ -107,9 +142,11 @@ const experiences: CardProps[] = [
         dates: "Sept '21 - Dec '21",
         location: "Markham",
         stack: "Telerik UI, ASP.NET, C#, SQL Server",
+        cardStyle: selectRandom(CARD_STYLES),
         content: (
             <div>
-                <p className="mb-4">
+                <p>blah blah blah</p>
+                {/* <p className="mb-4">
                     Returning to QBuild was great, because I was already
                     familiar the process, my coworkers and the culture. I got to
                     work on a different team this time. The product was ECx
@@ -129,7 +166,7 @@ const experiences: CardProps[] = [
                     <b>SQL Server</b> table, then an ObjectURL is generated and
                     placed in the HTML (so we don't need to see nasty blob
                     base64 strings).
-                </p>
+                </p> */}
             </div>
         ),
     },
@@ -139,9 +176,11 @@ const experiences: CardProps[] = [
         dates: "Jan '21 - Apr '21",
         location: "Markham",
         stack: "Kendo UI, ASP.NET, C#, SQL Server",
+        cardStyle: selectRandom(CARD_STYLES),
         content: (
             <div>
-                <p className="mb-4">
+                <p>blah blah blah</p>
+                {/* <p className="mb-4">
                     My first ever internship taught me a lot about working with
                     other developers and writing code in a production
                     environment. I worked on QBuild's in-house CRM, which
@@ -165,7 +204,7 @@ const experiences: CardProps[] = [
                     CRM, allowing some fields to be pre-populated from our
                     database, and reducing pdf generation time to as little as
                     500ms.
-                </p>
+                </p> */}
             </div>
         ),
     },
@@ -173,29 +212,31 @@ const experiences: CardProps[] = [
 
 const Experience = () => {
     const { windowWidth } = useContext(WindowContext);
-
+    const [selectedIdx, setSelectedIdx] = useState(-1);
     return (
-        <div className="bg-b-black min-h-screen sm:p-12 md:px-36 md:py-16">
+        <div className="bg-b-black min-h-[120vh] sm:p-12 md:px-36 md:py-16">
             <div className="text-b-white text-5xl max-sm:p-12 md:text-8xl lg:text-bigger md:mb-10">
                 WORK <span className="font-black">EXPERIENCE</span>
             </div>
-            <div className="flex flex-wrap justify-center">
+            <div className="flex flex-wrap justify-center mt-48">
                 {experiences.map((x, idx) => (
-                    <Card {...x} key={idx}>
-                        {Array(windowWidth < BREAKPOINT_SMALL ? 5 : 4)
-                            .fill(1)
-                            .map((x, i) => (
-                                <div className={`flex`} key={i}>
-                                    {Array(
-                                        windowWidth < BREAKPOINT_SMALL ? 3 : 4,
-                                    )
-                                        .fill(1)
-                                        .map((x, j) => (
-                                            <BAngularSquares i={j} key={j} />
-                                        ))}
-                                </div>
-                            ))}
-                    </Card>
+                    <div
+                        key={idx}
+                        className="-ml-20 transition-transform duration-500"
+                        style={{
+                            transform:
+                                selectedIdx >= 0
+                                    ? "translateY(18rem)"
+                                    : `rotate(${-10 + idx * 5}deg) translateY(${(2 - Math.abs((experiences.length - 1) / 2 - idx)) * -30}px)`,
+                        }}
+                    >
+                        <Card
+                            {...x}
+                            idx={idx}
+                            selectedIdx={selectedIdx}
+                            setSelectedIdx={setSelectedIdx}
+                        />
+                    </div>
                 ))}
             </div>
         </div>

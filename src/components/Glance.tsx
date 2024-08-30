@@ -42,9 +42,11 @@ const Glance = () => {
     const isVisible = useIsVisible(glanceRef);
 
     useEffect(() => {
+        if (!isVisible) return;
         for (let i = 0; i < 6; i++) {
             const elem = document.querySelector(`.c${i}`);
             if (!elem) continue;
+            elem.classList.remove(`.c${i}`);
             elem.classList.add(...popIn[i].split(" "));
         }
     }, [isVisible]);

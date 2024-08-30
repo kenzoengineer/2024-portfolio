@@ -1,6 +1,10 @@
 import { MouseEvent, useRef, useState } from "react";
 
-const dims = "w-[23rem] md:w-[28rem] h-[42rem] md:h-[38rem]";
+import { selectRandom } from "../consts";
+import { filterToHex, hexToRgb } from "../colorConvert";
+import BAngularSquares from "./bauhaus/BAngularSquares";
+
+const dims = "w-[23rem] md:w-64 h-[42rem] md:h-96";
 
 export interface CardProps {
     company: string;
@@ -9,7 +13,14 @@ export interface CardProps {
     dates: string;
     content: React.ReactNode | string;
     stack: string;
+    cardStyle: Record<string, any>;
     children?: React.ReactNode;
+}
+
+interface TotalCardProps extends CardProps {
+    idx: number;
+    selectedIdx: number;
+    setSelectedIdx(arg0: number): void;
 }
 
 const Card = ({
@@ -19,76 +30,115 @@ const Card = ({
     dates,
     stack,
     content,
-    children,
-}: CardProps) => {
+    cardStyle,
+    idx,
+    selectedIdx,
+    setSelectedIdx,
+}: TotalCardProps) => {
     const cardContainerElem = useRef<HTMLDivElement>(null);
 
     const cardElem = useRef<HTMLDivElement>(null);
-    const [flipped, setFlipped] = useState(false);
 
-    const mouseEnterHandler = () => {
-        cardContainerElem.current!.classList.add("z-20");
-    };
-    const mouseLeaveHandler = () => {
-        cardElem.current!.classList.add("transition-transform");
-        cardContainerElem.current!.classList.remove("z-20");
-        cardElem.current!.style.transform = "";
-    };
+    const flipped = idx === selectedIdx;
+    const someoneElseFlipped = selectedIdx >= 0 && selectedIdx !== idx;
+
+    const { color, hex, suit } = cardStyle;
+    const { filter } = filterToHex(hexToRgb(hex));
+
+    const mouseEnterHandler = () => {};
+    const mouseLeaveHandler = () => {};
     const mouseHandler = (e: MouseEvent | null) => {
         if (!e || flipped) {
             mouseLeaveHandler();
             return;
         }
-        const r = e!.currentTarget.getBoundingClientRect();
-        const x = e!.clientX - r.left;
-        const y = e!.clientY - r.top;
-        cardElem.current!.classList.remove("transition-transform");
-        cardElem.current!.style.transform = `rotateX(${40 * (y / r.height - 0.5)}deg) rotateY(${-40 * (x / r.width - 0.5)}deg) perspective(250px)
-         translate3d(${75 * (x / r.width - 0.5)}px, ${75 * (y / r.height - 0.5)}px, 20px)`;
     };
     const handleFlip = () => {
-        setFlipped((x) => !x);
-        mouseHandler(null);
+        // mutex
+        if (selectedIdx === -2) {
+            return;
+        }
+        if (flipped) {
+            // unflipping
+            setSelectedIdx(-1);
+        } else {
+            if (selectedIdx === -1) {
+                setSelectedIdx(idx);
+                return;
+            }
+            setSelectedIdx(-2);
+            setTimeout(() => {
+                setSelectedIdx(idx);
+            }, 600);
+        }
     };
-
     return (
         <div
-            className={`m-3 ${dims}`}
+            className={`m-3 ${dims} transition-transform duration-500 ${flipped && "-translate-y-96"}`}
             onClick={handleFlip}
             onMouseEnter={mouseEnterHandler}
             onMouseMove={mouseHandler}
             onMouseLeave={mouseLeaveHandler}
         >
             <div
-                className={`cursor-pointer preserve transition-transform ${flipped && "[transform:rotateY(180deg)]"} duration-500 relative`}
+                className={`cursor-pointer preserve transition-transform ${(flipped || someoneElseFlipped) && "[transform:rotateY(180deg)]"} duration-300 relative`}
                 ref={cardContainerElem}
             >
+                {/* FRONT OF THE CARD */}
                 <div
-                    className={`bg-b-white text-b-black p-5 shadow-2xl absolute ${dims}`}
+                    className={`bg-b-white ${color} p-5 shadow-2xl absolute ${dims} flex items-center justify-center rounded-lg transition-transform hover:-translate-y-10`}
                     ref={cardElem}
                 >
-                    <div className="font-black text-5xl md:text-7xl mb-3">
-                        {company}
+                    <div className="flex flex-col items-center absolute top-0 left-0 p-3">
+                        <h1 className="text-xl font-bold">
+                            {company[0].toUpperCase()}
+                        </h1>
+                        {suit}
                     </div>
-                    <div className="flex items-center mb-2">
-                        <div className="text-sm md:text-xl bg-b-black text-b-white font-bold py-1 px-3 mr-3">
-                            {title}
-                        </div>
-                        <div className="text-sm md:text-xl font-thin">
-                            {location}
-                        </div>
+                    <div>
+                        <img
+                            src={`./imgs/${company}.png`}
+                            className="w-48 h-48"
+                            style={{
+                                filter: filter,
+                            }}
+                        />
                     </div>
-                    <div className="flex flex-col items-center">{children}</div>
-                    <div className="mt-2">{dates}</div>
+                    <div className="flex flex-col items-center absolute bottom-0 right-0 p-3">
+                        <h1 className="text-xl font-bold">V</h1>
+                        {suit}
+                    </div>
                 </div>
+                {/* BACK OF THE CARD */}
                 <div
-                    className={`bg-b-white absolute [transform:rotateY(180deg)] max-sm:text-sm p-5 ${dims}`}
+                    className={`bg-b-white absolute [transform:rotateY(180deg)] max-sm:text-sm p-5 ${dims} rounded-lg flex flex-col items-center justify-center shadow-2xl`}
                 >
-                    <div className="bg-b-black text-b-white px-2 py-1 mb-4">
+                    {/* <div className="bg-b-black text-b-white px-2 py-1 mb-4">
                         <span className="font-bold mr-2">Stack:</span>
                         {stack}
-                    </div>
-                    {content}
+                    </div> */}
+                    {someoneElseFlipped ? (
+                        Array(3)
+                            .fill(1)
+                            .map((x, i) => (
+                                <div
+                                    className={`flex items-center justify-center`}
+                                    key={i}
+                                >
+                                    {Array(2)
+                                        .fill(1)
+                                        .map((x, j) => (
+                                            <BAngularSquares i={j} key={j} />
+                                        ))}
+                                </div>
+                            ))
+                    ) : (
+                        <div
+                            className={`${(someoneElseFlipped || !flipped) && "opacity-0"} `}
+                        >
+                            {content}
+                        </div>
+                    )}
                 </div>
             </div>
         </div>
