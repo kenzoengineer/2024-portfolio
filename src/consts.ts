@@ -29,6 +29,17 @@ export const extend = [
     "extend animation-delay-[1100ms] h-0",
 ];
 
+export const popIn = [
+    "popIn animation-delay-[500ms] opacity-0",
+    "popIn animation-delay-[1000ms] opacity-0",
+    "popIn animation-delay-[1500ms] opacity-0",
+    "popIn animation-delay-[2000ms] opacity-0",
+    "popIn animation-delay-[2500ms] opacity-0",
+    "popIn animation-delay-[3000ms] opacity-0",
+    "popIn animation-delay-[3500ms] opacity-0",
+    "popIn animation-delay-[4000ms] opacity-0",
+];
+
 export const selectRandom = (arr: any[]) => {
     return arr[Math.floor(Math.random() * arr.length)];
 };
