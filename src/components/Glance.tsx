@@ -68,7 +68,7 @@ const Glance = () => {
                         I'm experienced in...
                     </h1>
                     <div className="flex">
-                        <div className="c0">
+                        <div className="opacity-0 c0">
                             <BSmallCard
                                 title="FULL STACK"
                                 cta="https://github.com/kenzoengineer"
@@ -86,7 +86,7 @@ const Glance = () => {
                                 </div>
                             </BSmallCard>
                         </div>
-                        <div className="c1">
+                        <div className="opacity-0 c1">
                             <BSmallCard
                                 title="EMBEDDED"
                                 cta="https://github.com/kenzoengineer"
@@ -102,7 +102,7 @@ const Glance = () => {
                                 </div>
                             </BSmallCard>
                         </div>
-                        <div className="c2">
+                        <div className="opacity-0 c2">
                             <BSmallCard
                                 title="SYSTEMS"
                                 cta="https://github.com/kenzoengineer"
@@ -123,7 +123,7 @@ const Glance = () => {
                         In my spare time I enjoy...
                     </h1>
                     <div className="flex">
-                        <div className="c3">
+                        <div className="opacity-0 c3">
                             <BSmallCard
                                 title="DRAWING + DESIGN"
                                 cta="https://artstation.com/kenzoengineer"
@@ -131,7 +131,7 @@ const Glance = () => {
                                 <BShellsContainer width={3} height={1} />
                             </BSmallCard>
                         </div>
-                        <div className="c4">
+                        <div className="opacity-0 c4">
                             <BSmallCard
                                 title="FINAL FANTASY XIV"
                                 cta="https://www.fflogs.com/character/id/15363888"
@@ -139,7 +139,7 @@ const Glance = () => {
                                 <BShellsContainer width={3} height={1} />
                             </BSmallCard>
                         </div>
-                        <div className="c5">
+                        <div className="opacity-0 c5">
                             <BSmallCard
                                 title="THE DAILY FISHDLE :)"
                                 cta="https://tacklevillage.com/fishdle-game/"

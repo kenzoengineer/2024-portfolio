@@ -27,7 +27,7 @@ const BAngularSquares = ({ i }: BAngularSquaresProp) => {
     const fgColor = selectRandom(fgColors);
     const bgColor = selectRandom(bgColors);
     return (
-        <div className={`w-24 h-24 ${bgColor} ${fadeIn[i ?? 0]} fadeIn`}>
+        <div className={`w-24 h-24 ${bgColor}`}>
             <svg className={`h-24 w-24 ${fgColor}`}>
                 <polygon points={direction} />
             </svg>

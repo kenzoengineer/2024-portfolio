@@ -8,7 +8,7 @@ import {
     BsSuitClubFill,
     BsSuitHeartFill,
 } from "react-icons/bs";
-import { colors, selectRandom, useIsVisible } from "../consts";
+import { baggedRandom, colors, selectRandom, useIsVisible } from "../consts";
 
 const CARD_STYLES = [
     {
@@ -35,16 +35,29 @@ const CARD_STYLES = [
 
 const _experiences: CardProps[] = [
     {
+        company: "Sentry",
+        title: "Software Engineer",
+        dates: "Sep '24 - Present",
+        location: "San Francisco",
+        stack: "Python, Django, Typescript, React",
+        content: (
+            <div>
+                <p className="mb-4">
+                    Back to San Francisco to contribute to Sentry. Stay tuned
+                    for more updates :D
+                </p>
+            </div>
+        ),
+    },
+    {
         company: "Vontive",
         title: "Software Engineer",
         dates: "Jan '24 - Apr '24",
         location: "San Francisco",
         stack: "Vue, Vuetify, Typescript, Express, Postgres",
-        cardStyle: selectRandom(CARD_STYLES),
         content: (
             <div>
-                <p>blah blah blah</p>
-                {/* <p className="mb-4">
+                <p className="mb-4">
                     Vontive is the company I currently work at, right in the
                     heart of San Francisco's Financial District. Vontive creates
                     a whitelabelled mortgage trading platform, connecting
@@ -62,7 +75,7 @@ const _experiences: CardProps[] = [
                     This was done in <b>Typescript</b> using{" "}
                     <b>Vue, Vuetify, Express</b> and <b>Postgres</b> with{" "}
                     <b>TypeORM</b>.
-                </p> */}
+                </p>
             </div>
         ),
     },
@@ -72,11 +85,9 @@ const _experiences: CardProps[] = [
         dates: "Jan '23 - Apr '23",
         location: "Waterloo",
         stack: ".NET Core, C#, Typescript, SQL Server",
-        cardStyle: selectRandom(CARD_STYLES),
         content: (
             <div>
-                <p>blah blah blah</p>
-                {/* <p className="mb-4">
+                <p className="mb-4">
                     Senstar's video management system product was a WinForms
                     desktop application, built using <b>.NET Core</b>
                 </p>
@@ -95,7 +106,7 @@ const _experiences: CardProps[] = [
                     clients old integrations to our new integration standard
                     through a series of <b>Postgres</b> queries using{" "}
                     <b>Entity Framework</b>.
-                </p> */}
+                </p>
             </div>
         ),
     },
@@ -105,10 +116,9 @@ const _experiences: CardProps[] = [
         dates: "May '22 - Aug '22",
         location: "Oakville",
         stack: "React, .NET Core, C#, Typescript, Postgres",
-        cardStyle: selectRandom(CARD_STYLES),
         content: (
             <div>
-                {/* <p className="mb-4">
+                <p className="mb-4">
                     Shoplogix brought me out of the ASP.NET world and into the
                     (relatively) modern world of React. I was on the Whiteboard
                     team, which provided software to view factory metrics on
@@ -131,8 +141,7 @@ const _experiences: CardProps[] = [
                     Higher level nodes propogate their settings to all lower
                     nodes. Lower level nodes can also override by setting their
                     own configuration.
-                </p> */}
-                <p>blah blah blah</p>
+                </p>
             </div>
         ),
     },
@@ -142,11 +151,9 @@ const _experiences: CardProps[] = [
         dates: "Sept '21 - Dec '21",
         location: "Markham",
         stack: "Telerik UI, ASP.NET, C#, SQL Server",
-        cardStyle: selectRandom(CARD_STYLES),
         content: (
             <div>
-                <p>blah blah blah</p>
-                {/* <p className="mb-4">
+                <p className="mb-4">
                     Returning to QBuild was great, because I was already
                     familiar the process, my coworkers and the culture. I got to
                     work on a different team this time. The product was ECx
@@ -166,7 +173,7 @@ const _experiences: CardProps[] = [
                     <b>SQL Server</b> table, then an ObjectURL is generated and
                     placed in the HTML (so we don't need to see nasty blob
                     base64 strings).
-                </p> */}
+                </p>
             </div>
         ),
     },
@@ -176,11 +183,9 @@ const _experiences: CardProps[] = [
         dates: "Jan '21 - Apr '21",
         location: "Markham",
         stack: "Kendo UI, ASP.NET, C#, SQL Server",
-        cardStyle: selectRandom(CARD_STYLES),
         content: (
             <div>
-                <p>blah blah blah</p>
-                {/* <p className="mb-4">
+                <p className="mb-4">
                     My first ever internship taught me a lot about working with
                     other developers and writing code in a production
                     environment. I worked on QBuild's in-house CRM, which
@@ -204,7 +209,7 @@ const _experiences: CardProps[] = [
                     CRM, allowing some fields to be pre-populated from our
                     database, and reducing pdf generation time to as little as
                     500ms.
-                </p> */}
+                </p>
             </div>
         ),
     },
@@ -217,6 +222,8 @@ const Experience = () => {
 
     const isVisible = useIsVisible(handRef);
     const [appeared, setAppeared] = useState(isVisible);
+
+    const cardStyles = useRef(baggedRandom(CARD_STYLES, _experiences.length));
 
     useEffect(() => {
         if (isVisible && !appeared) {
@@ -237,8 +244,21 @@ const Experience = () => {
         fn();
     }, [appeared]);
 
+    const generateTransform = (i: number) => {
+        const n = experiences.length;
+        const DEG_DELTA = 5;
+        //                                 maxAngle               + angle based on index +    extra offset for even card count
+        const rotate = `rotate(${-DEG_DELTA * Math.floor(n / 2) + i * DEG_DELTA + (n % 2 === 0 && i >= n / 2 ? DEG_DELTA : 0)}deg)`;
+        const Y_DELTA = 10;
+        const weight = Math.pow(Math.abs((n + 1) / 2 - (i + 1)), 2);
+        const maxWeight = Math.pow((n - 1) / 2, 2);
+        const translateY = `translateY(-${(maxWeight - weight) * Y_DELTA}px)`;
+        console.log(i, weight, translateY);
+        return `${rotate} ${translateY}`;
+    };
+
     return (
-        <div className="bg-b-black min-h-[120vh] sm:p-12 md:px-36 md:py-16">
+        <div className="bg-b-black min-h-[150vh] sm:p-12 md:px-36 md:py-16">
             <div className="text-b-white text-5xl max-sm:p-12 md:text-8xl lg:text-bigger md:mb-48">
                 WORK <span className="font-black">EXPERIENCE</span>
             </div>
@@ -246,17 +266,18 @@ const Experience = () => {
                 {experiences.map((x, idx) => (
                     <div
                         key={idx}
-                        className="-ml-20 transition-transform duration-500"
+                        className="-ml-20 transition-transform duration-700"
                         style={{
                             transform:
                                 selectedIdx >= 0
-                                    ? "translateY(18rem)"
-                                    : `rotate(${-5 * Math.floor(experiences.length / 2) + idx * 5 + (experiences.length % 2 === 0 && idx >= experiences.length / 2 ? 5 : 0)}deg) translateY(${(2 - Math.abs((experiences.length - 1) / 2 - idx)) * -30}px)`,
+                                    ? "translateY(20rem)"
+                                    : generateTransform(idx),
                         }}
                     >
-                        <div className="popInInstant">
+                        <div className={`popInInstant`}>
                             <Card
                                 {...x}
+                                cardStyle={cardStyles.current[idx]}
                                 idx={idx}
                                 selectedIdx={selectedIdx}
                                 setSelectedIdx={setSelectedIdx}

@@ -44,6 +44,16 @@ export const selectRandom = (arr: any[]) => {
     return arr[Math.floor(Math.random() * arr.length)];
 };
 
+export const baggedRandom = (arr: any[], n: number) => {
+    const result = [];
+    let temp = [...arr];
+    for (let i = 0; i < n; i++) {
+        result.push(temp.splice(Math.floor(Math.random() * temp.length), 1)[0]);
+        if (!temp.length) temp = [...arr];
+    }
+    return result;
+};
+
 export function useIsVisible(
     ref: React.MutableRefObject<any>,
     threshold = 0.6,
