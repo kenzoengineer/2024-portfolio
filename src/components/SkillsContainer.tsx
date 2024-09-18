@@ -29,12 +29,12 @@ interface SkillsContainerProps {
 
 const SkillsContainer = ({ setHovered }: SkillsContainerProps) => {
     return (
-        <div className="flex flex-col max-md:mt-10 ml-24 md:ml-10">
+        <div className="flex flex-col max-md:mt-10 w-screen items-center justify-center p-2">
             <div className="mb-10">
-                <div className="flex">
+                <div className="flex justify-center">
                     <h1 className="text-3xl font-thin">LANGUAGES</h1>
                 </div>
-                <div className="flex flex-wrap max-sm:w-screen max-md:gap-y-7">
+                <div className="flex flex-wrap gap-1 justify-center">
                     <IconContainer
                         bg={"bg-b-blue"}
                         name="Javascript"
@@ -80,10 +80,10 @@ const SkillsContainer = ({ setHovered }: SkillsContainerProps) => {
                 </div>
             </div>
             <div className="mb-10">
-                <div className="flex">
+                <div className="flex justify-center">
                     <h1 className="text-3xl font-thin">FRAMEWORKS</h1>
                 </div>
-                <div className="flex flex-wrap max-md:w-screen max-md:gap-y-7">
+                <div className="flex flex-wrap gap-1 justify-center">
                     <IconContainer
                         bg={"bg-b-yellow"}
                         name="React"
@@ -129,10 +129,10 @@ const SkillsContainer = ({ setHovered }: SkillsContainerProps) => {
                 </div>
             </div>
             <div className="mb-10">
-                <div className="flex">
+                <div className="flex justify-center">
                     <h1 className="text-3xl font-thin">TOOLS</h1>
                 </div>
-                <div className="flex flex-wrap max-md:w-screen max-md:gap-y-7">
+                <div className="flex flex-wrap gap-1 justify-center">
                     <IconContainer
                         bg={"bg-b-red"}
                         name="Git"

@@ -279,7 +279,7 @@ const PhysicsPane = ({ setTitleText }: PhysicsPaneProps) => {
         <div className="">
             <div
                 ref={sceneRef}
-                className={`w-[700px] h-[600px] border-8 border-b-black relative`}
+                className={`w-[700px] h-[600px] max-xl:mt-10 md:border-8 border-b-black relative`}
             >
                 {Array(ICON_LIST.length)
                     .fill(1)
@@ -306,7 +306,7 @@ const PhysicsPane = ({ setTitleText }: PhysicsPaneProps) => {
                     );
                 })}
             </div>
-            <div className="flex items-center">
+            <div className="flex items-center max-md:hidden">
                 <div
                     className={`${enableGravity ? "bg-b-red" : "bg-b-blue"} text-b-white font-medium text-xl py-2 px-4 w-56 flex items-center transition-transform hover:scale-105 cursor-pointer select-none`}
                     onClick={() => {

@@ -17,7 +17,7 @@ const BLogs = () => {
     }, [isVisible]);
 
     const rowStyle =
-        "relative w-[80vw] md:w-[30rem] h-24 md:h-20 overflow-x-hidden bg-b-black";
+        "relative w-[90vw] md:w-[30rem] h-16 md:h-20 overflow-hidden bg-b-black";
 
     return (
         <div className="flex flex-col" ref={ref}>

@@ -1,6 +1,6 @@
 import { MouseEvent, useRef } from "react";
 
-const dims = "w-[10rem] md:w-[15rem] h-[10rem] md:h-[10rem]";
+const dims = "w-[15rem] h-[10rem]";
 
 interface CardProps {
     title: string;
@@ -52,7 +52,7 @@ const BSmallCard = ({ title, children, cta }: CardProps) => {
                         ref={cardElem}
                         className={`bg-b-black ${dims} shadow-lg hover:shadow-b-yellow transition-shadow`}
                     >
-                        <div className="text-sm md:text-3xl text-b-white font-bold py-1 px-3">
+                        <div className="text-3xl text-b-white font-bold py-1 px-3">
                             {title}
                         </div>
                         <div className="flex flex-col items-center">

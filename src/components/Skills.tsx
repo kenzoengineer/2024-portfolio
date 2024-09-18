@@ -3,6 +3,7 @@ import PhysicsPane from "./PhysicsPane";
 import BLogs from "./bauhaus/BLogs";
 import { FaArrowRight } from "react-icons/fa";
 import { fadeIn, useIsVisible } from "../consts";
+import SkillsContainer from "./SkillsContainer";
 
 const Skills = () => {
     const titleRef = useRef<HTMLDivElement>(null);
@@ -28,7 +29,7 @@ const Skills = () => {
             <div className="text-6xl sm:text-8xl md:text-big mb-5">
                 TECHNICAL<span className="font-black"> SKILLS</span>
             </div>
-            <div className="flex items-center justify-center gap-x-10">
+            <div className="flex items-center justify-center gap-x-10 max-xl:flex-col">
                 <div className="flex flex-col items-center">
                     <div className="flex items-center bg-b-yellow text-b-black font-medium px-4 py-2 m-2">
                         <h3 className="pr-2">
@@ -42,21 +43,28 @@ const Skills = () => {
                             ref={awardRef}
                             className={`opacity-0 bg-b-black border-8 border-b-white text-b-white p-5 w-max absolute top-[50%] left-[50%] -translate-x-1/2 -translate-y-1/2`}
                         >
-                            <h2 className="text-2xl">World's most adequate</h2>
-                            <div className="border-b-4 border-b-red w-72">
+                            <h2 className="text-xl md:text-2xl">
+                                World's most adequate
+                            </h2>
+                            <div className="border-b-4 border-b-red w-52 md:w-72">
                                 <p
-                                    className={`text-5xl h-12 my-2 font-bold transition-opacity duration-500`}
+                                    className={`text-3xl md:text-5xl h-8 md:h-12 my-2 font-bold transition-opacity duration-500`}
                                     ref={titleRef}
                                 >
                                     {titleText}
                                 </p>
                             </div>
-                            <h2 className="text-2xl">developer</h2>
+                            <h2 className="text-xl md:text-2xl">developer</h2>
                         </div>
                     </div>
                 </div>
                 <div>
-                    <PhysicsPane setTitleText={setTitleText} />
+                    <div className="md:hidden">
+                        <SkillsContainer setHovered={setTitleText} />
+                    </div>
+                    <div className="max-md:hidden">
+                        <PhysicsPane setTitleText={setTitleText} />
+                    </div>
                 </div>
             </div>
         </div>

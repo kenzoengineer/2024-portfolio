@@ -32,7 +32,7 @@ const Hero = () => {
                 </span>
                 <IoMdDesktop className="text-b-white" />
             </div>
-            <div className="text-b-black md:pl-24 max-md:pb-10 pr-5 md:pr-10 text-center md:text-right md:h-screen flex flex-col justify-center">
+            <div className="text-b-black md:pr-10 text-center md:text-right md:h-screen flex flex-col justify-center">
                 <div className="flex items-center justify-center md:justify-end">
                     <h1
                         className={`text-8xl sm:text-9xl md:text-bigger font-medium h-[5rem] sm:h-[6rem] md:h-[8rem] ${fadeIn[0]} fadeIn w-min`}
@@ -46,13 +46,14 @@ const Hero = () => {
                     JIANG
                 </h1>
                 <p className={`text-2xl font-thin ${fadeIn[2]} `}>
-                    Incoming SWE @<span className="font-bold"> Sentry </span>
+                    Software Engineering Intern @
+                    <span className="font-bold"> Sentry </span>
                 </p>
                 <p className={`text-2xl font-thin ${fadeIn[3]} `}>
                     Computer Engineering @{" "}
                     <span className="font-bold">UWaterloo</span>
                 </p>
-                <div className="flex mt-4 justify-center items-center md:justify-end">
+                <div className="flex mt-4 justify-center items-center md:justify-end mb-5 md:mb-0">
                     <a
                         href={PDF}
                         target="_blank"

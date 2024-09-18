@@ -8,7 +8,13 @@ import {
     BsSuitClubFill,
     BsSuitHeartFill,
 } from "react-icons/bs";
-import { baggedRandom, colors, selectRandom, useIsVisible } from "../consts";
+import {
+    baggedRandom,
+    colors,
+    selectRandom,
+    useIsVisible,
+    useWindowDimension,
+} from "../consts";
 
 const CARD_STYLES = [
     {
@@ -43,8 +49,11 @@ const _experiences: CardProps[] = [
         content: (
             <div>
                 <p className="mb-4">
-                    Back to San Francisco to contribute to Sentry. Stay tuned
-                    for more updates :D
+                    Making Sentry's developers more productive on the Developer
+                    Infrastructure Team. I've already improved our in-house GoCD
+                    wrapper by adding better fetch logic and adding the ability
+                    to pause pipelines through our portal. Stay tuned for more
+                    achievements!
                 </p>
             </div>
         ),
@@ -58,10 +67,10 @@ const _experiences: CardProps[] = [
         content: (
             <div>
                 <p className="mb-4">
-                    Vontive is the company I currently work at, right in the
-                    heart of San Francisco's Financial District. Vontive creates
-                    a whitelabelled mortgage trading platform, connecting
-                    commercial loan seekers with big capital debt buyers.
+                    Right in the heart of San Francisco's Financial District,
+                    Vontive creates a whitelabelled mortgage trading platform,
+                    connecting commercial loan seekers with big capital debt
+                    buyers.
                 </p>
                 <p className="mb-4">
                     I worked with another intern to integrate with a third party
@@ -225,6 +234,8 @@ const Experience = () => {
 
     const cardStyles = useRef(baggedRandom(CARD_STYLES, _experiences.length));
 
+    const [screenW, _] = useWindowDimension();
+
     useEffect(() => {
         if (isVisible && !appeared) {
             setAppeared(true);
@@ -258,7 +269,7 @@ const Experience = () => {
     };
 
     return (
-        <div className="bg-b-black min-h-[150vh] sm:p-12 md:px-36 md:py-16">
+        <div className="bg-b-black min-h-[200vh] md:min-h-[150vh] sm:p-12 md:px-36 md:py-16">
             <div className="text-b-white text-5xl max-sm:p-12 md:text-8xl lg:text-bigger md:mb-48">
                 WORK <span className="font-black">EXPERIENCE</span>
             </div>
@@ -266,12 +277,14 @@ const Experience = () => {
                 {experiences.map((x, idx) => (
                     <div
                         key={idx}
-                        className="-ml-20 transition-transform duration-700"
+                        className="md:-ml-20 transition-transform duration-700"
                         style={{
                             transform:
-                                selectedIdx >= 0
-                                    ? "translateY(20rem)"
-                                    : generateTransform(idx),
+                                screenW > 728
+                                    ? selectedIdx >= 0
+                                        ? "translateY(20rem)"
+                                        : generateTransform(idx)
+                                    : "",
                         }}
                     >
                         <div className={`popInInstant`}>

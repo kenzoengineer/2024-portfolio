@@ -1,11 +1,11 @@
-import { MouseEvent, useRef, useState } from "react";
-
-import { fadeIn, selectRandom } from "../consts";
+import { MouseEvent, useRef } from "react";
 import { filterToHex, hexToRgb } from "../colorConvert";
 import BAngularSquares from "./bauhaus/BAngularSquares";
 import { FaCalendar, FaLocationArrow } from "react-icons/fa";
+import { useWindowDimension } from "../consts";
 
-const dims = "w-[23rem] md:w-64 h-[42rem] md:h-96";
+const dims = "w-[10rem] md:w-64 h-[16rem] md:h-96";
+const bigDims = "max-md:w-[16rem] max-md:h-[24rem] w-64 h-96";
 
 export interface CardProps {
     company: string;
@@ -46,6 +46,8 @@ const Card = ({
     const { color, hex, suit } = cardStyle;
     const { filter } = filterToHex(hexToRgb(hex));
 
+    const [screenW, _] = useWindowDimension();
+
     const mouseEnterHandler = () => {};
     const mouseLeaveHandler = () => {};
     const mouseHandler = (e: MouseEvent | null) => {
@@ -73,11 +75,12 @@ const Card = ({
             }, 600);
         }
     };
+
     return (
         <div
-            className={`m-3 ${dims} transition-transform duration-700`}
+            className={`m-3 ${flipped ? bigDims : dims} transition-all duration-700 cursor-pointer`}
             style={{
-                transform: `${flipped ? `translate(-${12.5 * idx}rem,-28rem)` : "translate(0,0)"}`,
+                transform: `${flipped && screenW > 728 ? `translate(-${12.5 * idx}rem,-28rem)` : "translate(0,0)"}`,
             }}
             onClick={handleFlip}
             onMouseEnter={mouseEnterHandler}
@@ -86,7 +89,7 @@ const Card = ({
         >
             {/* extra content */}
             <div
-                className={`absolute ${flipped ? "opacity-1 delay-700" : "opacity-0"} left-[150%] w-[48rem] transition-all h-96 bg-b-white top-0 rounded-lg p-5`}
+                className={`max-md:hidden absolute ${flipped ? "opacity-1 delay-700" : "opacity-0"} left-[150%] w-[48rem] transition-all h-96 bg-b-white top-0 rounded-lg p-5`}
             >
                 {content}
             </div>
@@ -96,7 +99,7 @@ const Card = ({
             >
                 {/* FRONT OF THE CARD */}
                 <div
-                    className={`bg-b-white ${color} p-5 shadow-2xl absolute ${dims} flex items-center justify-center rounded-lg transition-transform hover:-translate-y-10`}
+                    className={`bg-b-white ${color} p-5 shadow-2xl absolute ${flipped ? bigDims : dims} flex items-center justify-center rounded-lg transition-all md:hover:-translate-y-10`}
                     ref={cardElem}
                 >
                     <div className="flex flex-col items-center absolute top-0 left-0 p-3">
@@ -107,11 +110,12 @@ const Card = ({
                     </div>
                     <div>
                         <img
-                            src={`./imgs/${company}.png`}
-                            className="w-48 h-48"
+                            src={`./imgs/${company.toLowerCase()}.png`}
+                            className="w-24 h-24 md:w-48 md:h-48"
                             style={{
                                 filter: filter,
                             }}
+                            alt={`${company} logo`}
                         />
                     </div>
                     <div className="flex flex-col items-center absolute bottom-0 right-0 p-3">
@@ -121,7 +125,7 @@ const Card = ({
                 </div>
                 {/* BACK OF THE CARD */}
                 <div
-                    className={`bg-b-white absolute [transform:rotateY(180deg)] duration-300 transition-transform max-sm:text-sm p-5 ${dims} rounded-lg flex flex-col items-center shadow-2xl`}
+                    className={`bg-b-white absolute [transform:rotateY(180deg)] duration-300 transition-all max-sm:text-sm p-5 ${flipped ? bigDims : dims} rounded-lg flex flex-col items-center shadow-2xl overflow-hidden`}
                 >
                     {someoneElseFlipped ? (
                         Array(3)
@@ -140,18 +144,21 @@ const Card = ({
                             ))
                     ) : (
                         <div
-                            className={`${(someoneElseFlipped || !flipped) && "opacity-0"} `}
+                            className={`${(someoneElseFlipped || !flipped) && "opacity-0"}`}
                         >
                             <div className="h-24 flex items-center justify-center overflow-hidden relative">
                                 <img
-                                    src={`./imgs/${company}.png`}
+                                    src={`./imgs/${company.toLowerCase()}.png`}
                                     className="w-48 h-48 mt-14 rotate-12"
                                     style={{
                                         filter: filter,
                                     }}
+                                    alt={`${company} logo`}
                                 />
                             </div>
-                            <h1 className={`text-4xl font-black ${color} mb-1`}>
+                            <h1
+                                className={`text-2xl md:text-4xl font-black ${color} mb-1`}
+                            >
                                 {company}
                             </h1>
                             <h2 className="text-md italic bg-b-black text-b-white px-2 py-1 mb-2">
@@ -165,7 +172,6 @@ const Card = ({
                                 <FaLocationArrow className="mr-1" />
                                 <p>{location}</p>
                             </div>
-
                             <ul className="list-disc list-inside ml-1">
                                 {stack.split(", ").map((x, i) => {
                                     return (
