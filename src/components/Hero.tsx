@@ -6,7 +6,7 @@ import BRoundSquares from "./bauhaus/BRoundSquares";
 import { useContext } from "react";
 import { WindowContext } from "../App";
 
-import PDF from "../Ken_Jiang_Feb_2024.pdf";
+import PDF from "../Oct_2024_NG.pdf";
 
 const Hero = () => {
     const { windowWidth, windowHeight } = useContext(WindowContext);
