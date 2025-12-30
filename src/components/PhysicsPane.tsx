@@ -14,15 +14,15 @@ import {
 } from "react-icons/fa";
 import { TbBrandCSharp } from "react-icons/tb";
 import {
-    SiCplusplus,
     SiTypescript,
     SiJavascript,
     SiVuetify,
     SiReact,
     SiDotnet,
-    SiMongodb,
-    SiUnity,
     SiNextdotjs,
+    SiRust,
+    SiKubernetes,
+    SiTerraform,
 } from "react-icons/si";
 import { BiLogoVuejs, BiLogoPostgresql } from "react-icons/bi";
 
@@ -85,8 +85,8 @@ const PhysicsPane = ({ setTitleText }: PhysicsPaneProps) => {
         <IconContainer bg={"bg-b-blue"} name="C#" setHovered={setTitleText}>
             <TbBrandCSharp className={iconClass} />
         </IconContainer>,
-        <IconContainer bg={"bg-b-blue"} name="C++" setHovered={setTitleText}>
-            <SiCplusplus className={iconClass} />
+        <IconContainer bg={"bg-b-blue"} name="Rust" setHovered={setTitleText}>
+            <SiRust className={iconClass} />
         </IconContainer>,
         <IconContainer bg={"bg-b-blue"} name="Java" setHovered={setTitleText}>
             <FaJava className={iconClass} />
@@ -127,8 +127,12 @@ const PhysicsPane = ({ setTitleText }: PhysicsPaneProps) => {
         >
             <BiLogoPostgresql className={iconClass} />
         </IconContainer>,
-        <IconContainer bg={"bg-b-red"} name="MongoDB" setHovered={setTitleText}>
-            <SiMongodb className={iconClass} />
+        <IconContainer
+            bg={"bg-b-red"}
+            name="Kubernetes"
+            setHovered={setTitleText}
+        >
+            <SiKubernetes className={iconClass} />
         </IconContainer>,
         <IconContainer bg={"bg-b-red"} name="Docker" setHovered={setTitleText}>
             <FaDocker className={iconClass} />
@@ -136,8 +140,12 @@ const PhysicsPane = ({ setTitleText }: PhysicsPaneProps) => {
         <IconContainer bg={"bg-b-red"} name="AWS" setHovered={setTitleText}>
             <FaAws className={iconClass} />
         </IconContainer>,
-        <IconContainer bg={"bg-b-red"} name="Unity" setHovered={setTitleText}>
-            <SiUnity className={iconClass} />
+        <IconContainer
+            bg={"bg-b-red"}
+            name="Terraform"
+            setHovered={setTitleText}
+        >
+            <SiTerraform className={iconClass} />
         </IconContainer>,
     ];
 

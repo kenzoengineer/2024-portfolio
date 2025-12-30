@@ -43,24 +43,73 @@ const _experiences: CardProps[] = [
     {
         company: "Sentry",
         title: "Software Engineer",
-        dates: "Sep '24 - Present",
+        dates: "Aug '25 - Present",
         location: "San Francisco",
-        stack: "Python, Django, Typescript, React",
+        stack: "Python, Rust, GCP, React",
         content: (
             <div>
                 <p className="mb-4">
-                    Making Sentry's developers more productive on the Developer
-                    Infrastructure Team. I've already improved our in-house GoCD
-                    wrapper by adding better fetch logic and adding the ability
-                    to pause pipelines through our portal. Stay tuned for more
-                    achievements!
+                    Even in my short time working full time at Sentry (back on
+                    the developer infrastructure team!), I've already made a
+                    meaningful impact.
+                </p>
+                <p className="mb-4">
+                    After noticing our <b>GoCD</b> pipelines were being paused a
+                    lot more recently, I decided to push for better
+                    observability and better metrics for our deployment
+                    pipelines. I created a <b>Log Router</b> in GCP and exposed
+                    a <b>BigQuery</b> table in Helios (Yes we are still using
+                    it!). This easy to digest dashboard of our pauses and the
+                    reasons behind them was presented to leadership, which lead
+                    to real action being taken, reducing our total pause
+                    frequency by 20%.
+                </p>
+                <p className="mb-4">
+                    Currently I'm working on a unified feature flag platform for
+                    services at our company. After this is completed, all
+                    existing and new services at Sentry will have a native way
+                    to flag features, deployed as a config map in each K8
+                    cluster. This is written in <b>Rust</b> and made accessible
+                    in Python with <b>Pyo3</b> for performance.
+                </p>
+            </div>
+        ),
+    },
+    {
+        company: "Sentry",
+        title: "Software Intern",
+        dates: "Sep '24 - Dec '24",
+        location: "San Francisco",
+        stack: "Python, GCP, Typescript, React",
+        content: (
+            <div>
+                <p className="mb-4">
+                    On Sentry's developer infrastructure team, I created Helios,
+                    a bespoke dashboard created using <b>React</b> and{" "}
+                    <b>Flask</b>, backed by <b>BigQuery</b>. Helios provides
+                    insights into the health of our various core features,
+                    displaying monthly cost, usage metrics, SLOs, and incidents.
+                    It tracks these trends over time and gives each feature a
+                    score, allowing developers to really understand how their
+                    features are performing.
+                </p>
+                <p className="mb-4">
+                    Not only did I learn a lot about full stack development, but
+                    this was my first foray into data engineering and
+                    infrastructure, requiring me to learn tools like{" "}
+                    <b>Airflow</b> and <b>Terraform</b>. The last month was me
+                    taking up valuable staff engineering time to learn how use
+                    use Terraform to spin up <b>GCP</b> resources. In the end, I
+                    was able to create cloud run instances, an IAP-secured load
+                    balancer, several BigQuery tables and even a Memorystore{" "}
+                    <b>Redis</b> cache all using Infrastructure as code.
                 </p>
             </div>
         ),
     },
     {
         company: "Vontive",
-        title: "Software Engineer",
+        title: "Software Intern",
         dates: "Jan '24 - Apr '24",
         location: "San Francisco",
         stack: "Vue, Vuetify, Typescript, Express, Postgres",
@@ -90,7 +139,7 @@ const _experiences: CardProps[] = [
     },
     {
         company: "Senstar",
-        title: "Software Developer",
+        title: "Software Intern",
         dates: "Jan '23 - Apr '23",
         location: "Waterloo",
         stack: ".NET Core, C#, Typescript, SQL Server",
@@ -121,7 +170,7 @@ const _experiences: CardProps[] = [
     },
     {
         company: "Shoplogix",
-        title: "Software Developer",
+        title: "Software Intern",
         dates: "May '22 - Aug '22",
         location: "Oakville",
         stack: "React, .NET Core, C#, Typescript, Postgres",
@@ -156,7 +205,7 @@ const _experiences: CardProps[] = [
     },
     {
         company: "QBuild",
-        title: "Application Developer",
+        title: "Application Intern",
         dates: "Sept '21 - Dec '21",
         location: "Markham",
         stack: "Telerik UI, ASP.NET, C#, SQL Server",
@@ -188,7 +237,7 @@ const _experiences: CardProps[] = [
     },
     {
         company: "QBuild",
-        title: "Application Developer",
+        title: "Application Intern",
         dates: "Jan '21 - Apr '21",
         location: "Markham",
         stack: "Kendo UI, ASP.NET, C#, SQL Server",

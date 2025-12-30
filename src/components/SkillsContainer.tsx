@@ -8,15 +8,15 @@ import {
 } from "react-icons/fa";
 import { TbBrandCSharp } from "react-icons/tb";
 import {
-    SiCplusplus,
     SiTypescript,
     SiJavascript,
     SiVuetify,
     SiReact,
     SiDotnet,
-    SiMongodb,
-    SiUnity,
     SiNextdotjs,
+    SiRust,
+    SiKubernetes,
+    SiTerraform,
 } from "react-icons/si";
 import { BiLogoVuejs, BiLogoPostgresql } from "react-icons/bi";
 import IconContainer from "./IconContainer";
@@ -65,10 +65,10 @@ const SkillsContainer = ({ setHovered }: SkillsContainerProps) => {
                     </IconContainer>
                     <IconContainer
                         bg={"bg-b-blue"}
-                        name="C++"
+                        name="Rust"
                         setHovered={setHovered}
                     >
-                        <SiCplusplus className={iconClass} />
+                        <SiRust className={iconClass} />
                     </IconContainer>
                     <IconContainer
                         bg={"bg-b-blue"}
@@ -149,10 +149,10 @@ const SkillsContainer = ({ setHovered }: SkillsContainerProps) => {
                     </IconContainer>
                     <IconContainer
                         bg={"bg-b-red"}
-                        name="MongoDB"
+                        name="Kubernetes"
                         setHovered={setHovered}
                     >
-                        <SiMongodb className={iconClass} />
+                        <SiKubernetes className={iconClass} />
                     </IconContainer>
                     <IconContainer
                         bg={"bg-b-red"}
@@ -170,10 +170,10 @@ const SkillsContainer = ({ setHovered }: SkillsContainerProps) => {
                     </IconContainer>
                     <IconContainer
                         bg={"bg-b-red"}
-                        name="Unity"
+                        name="Terraform"
                         setHovered={setHovered}
                     >
-                        <SiUnity className={iconClass} />
+                        <SiTerraform className={iconClass} />
                     </IconContainer>
                 </div>
             </div>

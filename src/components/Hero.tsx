@@ -6,7 +6,7 @@ import BRoundSquares from "./bauhaus/BRoundSquares";
 import { useContext } from "react";
 import { WindowContext } from "../App";
 
-import PDF from "../Oct_2024_NG.pdf";
+import PDF from "../2026_NG_Resume.pdf";
 
 const Hero = () => {
     const { windowWidth, windowHeight } = useContext(WindowContext);
@@ -46,11 +46,11 @@ const Hero = () => {
                     JIANG
                 </h1>
                 <p className={`text-2xl font-thin ${fadeIn[2]} `}>
-                    Software Engineering Intern @
+                    Software Engineer @
                     <span className="font-bold"> Sentry </span>
                 </p>
                 <p className={`text-2xl font-thin ${fadeIn[3]} `}>
-                    Computer Engineering @{" "}
+                    Computer Engineering Alum @{" "}
                     <span className="font-bold">UWaterloo</span>
                 </p>
                 <div className="flex mt-4 justify-center items-center md:justify-end mb-5 md:mb-0">

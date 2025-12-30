@@ -10,28 +10,34 @@ const TimelineConst = [
         title: "Sentry",
         subtitle: "Software Engineer",
         content: "San Francisco, CA",
+        time: "'25",
+    },
+    {
+        title: "Sentry",
+        subtitle: "Software Intern",
+        content: "San Francisco, CA",
     },
     {
         title: "Vontive",
-        subtitle: "Software Engineer",
+        subtitle: "Software Intern",
         content: "San Francisco, CA",
         time: "'24",
     },
     {
         title: "Senstar",
-        subtitle: "Software Developer",
+        subtitle: "Software Intern",
         content: "Waterloo, ON",
         time: "'23",
     },
     {
         title: "Shoplogix",
-        subtitle: "Software Developer",
+        subtitle: "Software Intern",
         content: "Oakville, ON",
         time: "'22",
     },
     {
         title: "QBuild",
-        subtitle: "Application Developer",
+        subtitle: "Application Intern",
         content: "Markham, ON",
         time: "'21",
     },
@@ -110,10 +116,10 @@ const Glance = () => {
                                 >
                                     <div className="font-semibold">
                                         <p className="text-b-red">
-                                            Java, C, C#
+                                            Java, C/C#, Rust
                                         </p>
                                         <p className="text-b-blue">
-                                            Thrift, Zookeeper, Spark
+                                            Terraform, Kubernetes
                                         </p>
                                         <p className="text-b-yellow">
                                             Docker, AWS, GCP
